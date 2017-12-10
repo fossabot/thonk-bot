@@ -14,16 +14,19 @@ client.on('message', (message) => {
     }
 
     if(message.content == '!pony') {
-      const voiceChannel = message.member.voiceChannel;
-      if (message.member.voiceChannel) {
-        message.member.voiceChannel.join();
-        const dispatcher = connection.playArbitraryInput('https://my.mixtape.moe/ustawp.mp3');
-        dispatch.on('end', () => {
-          dispatcher.end();
+      var voiceChannel = message.member.voiceChannel;
+      voiceChannel.join().then(connection =>{
+        const dispatcher = connection.playFile('./media/shit.mp3') //this is a fucking mlp theme song if you wondering
+        dispatcher.on("end", end => {
+          voiceChannel.leave();
+        })
+        if (message.content == '!stoppony') {
           voiceChannel.leave();
         }
-      }
-    }
-});
+      })
+        }
+      })
 
-client.login(process.env.BOT_TOKEN); //make the bot appear
+
+client.login('MzcxNjMwMjAxNTIxNTY5Nzky.DQ6Hqg.NFzfav0pMrMm4kp7JPSxa21QTj0'); //make the bot appear
+//process.env.BOT_TOKEN

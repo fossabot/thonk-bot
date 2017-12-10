@@ -20,9 +20,6 @@ client.on('message', (message) => {
         dispatcher.on("end", end => {
           voiceChannel.leave();
         })
-        if (message.content == '!stoppony') {
-          voiceChannel.leave();
-        }
       })
         }
       })

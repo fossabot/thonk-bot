@@ -7,4 +7,4 @@ client.on('message', (message) => {
     }
 });
 
-client.login('process.env.TOKEN'); //make the bot appear
+client.login('process.env.BOT_TOKEN'); //make the bot appear

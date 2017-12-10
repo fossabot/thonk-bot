@@ -24,7 +24,7 @@ client.on('message', (message) => {
         if(message.content == '!cringe') {
           var fs = require('fs');
           var cringe = fs.readFileSync('cringe.txt').toString().split("\n");
-          var rnd = Math.floor(Math.random() * 9);
+          var rnd = Math.floor(Math.random() * 21);
           message.channel.send(cringe[rnd]);
         }
       })

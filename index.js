@@ -17,11 +17,13 @@ client.on('message', (message) => {
       var voiceChannel = message.member.voiceChannel;
       voiceChannel.join().then(connection =>{
         const dispatcher = connection.playFile('./media/shit.mp3') //this is a fucking mlp theme song if you wondering
+        message.reply('Cancer activated, type !pony again to cancel');
         dispatcher.on("end", end => {
           voiceChannel.leave();
         })
       })
         }
+
       })
 
 

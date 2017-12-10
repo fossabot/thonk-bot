@@ -2,7 +2,21 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 
-
+function mariotakingshit() {
+  message.channel.send(cuntmario[0]);
+  message.channel.send(cuntmario[1]);
+  message.channel.send(cuntmario[2]);
+  message.channel.send(cuntmario[3]);
+  message.channel.send(cuntmario[4]);
+  message.channel.send(cuntmario[5]);
+  message.channel.send(cuntmario[6]);
+  message.channel.send(cuntmario[7]);
+  message.channel.send(cuntmario[8]);
+  message.channel.send(cuntmario[9]);
+  message.channel.send(cuntmario[10]);
+  message.channel.send(cuntmario[11]);
+  message.channel.send(cuntmario[12]);
+}
 client.on('message', (message) => {
   if(!message.guild) return; //cuz we dont want dm
     if(message.content == 'kys') {
@@ -30,19 +44,7 @@ client.on('message', (message) => {
         "░░▐█▐▄░░▀░░░░░░▐░█▄▄",
         "░░░▀▀░GOTCHA░░░░▐▄▄▄▀"
       ]
-      message.channel.send(cuntmario[0]);
-      message.channel.send(cuntmario[1]);
-      message.channel.send(cuntmario[2]);
-      message.channel.send(cuntmario[3]);
-      message.channel.send(cuntmario[4]);
-      message.channel.send(cuntmario[5]);
-      message.channel.send(cuntmario[6]);
-      message.channel.send(cuntmario[7]);
-      message.channel.send(cuntmario[8]);
-      message.channel.send(cuntmario[9]);
-      message.channel.send(cuntmario[10]);
-      message.channel.send(cuntmario[11]);
-      message.channel.send(cuntmario[12]);
+      setTimeout(mariotakingshit, 3000);
     }
 
     if(message.content == '!pony') {

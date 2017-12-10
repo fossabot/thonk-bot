@@ -2,21 +2,6 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 
-function mariotakingshit() {
-  message.channel.send(cuntmario[0]);
-  message.channel.send(cuntmario[1]);
-  message.channel.send(cuntmario[2]);
-  message.channel.send(cuntmario[3]);
-  message.channel.send(cuntmario[4]);
-  message.channel.send(cuntmario[5]);
-  message.channel.send(cuntmario[6]);
-  message.channel.send(cuntmario[7]);
-  message.channel.send(cuntmario[8]);
-  message.channel.send(cuntmario[9]);
-  message.channel.send(cuntmario[10]);
-  message.channel.send(cuntmario[11]);
-  message.channel.send(cuntmario[12]);
-}
 client.on('message', (message) => {
   if(!message.guild) return; //cuz we dont want dm
     if(message.content == 'kys') {
@@ -26,27 +11,6 @@ client.on('message', (message) => {
     if(message.content == 'whos the best pony?') {
       message.reply('Celestia is da best pony!!/!!!!!');
     }
-
-    if(message.content == '!mario') {
-      var cuntmario = [
-        "░░░░░░░░░▓▓▓▓▀█░░░░░░░░░░░░░",
-        "░░░░░░▄▀▓▓▄██████▄ ",
-        "░░░░░▄█▄█▀░░▄░▄░█▀",
-        "░░░░▄▀░██▄░░▀░▀░▀▄ ",
-        "░░░░▀▄░░▀░▄█▄▄░░▄█▄ ",
-        "░░░░░░▀█▄▄░░▀▀▀█▀ ",
-        "░░░░░░█░░░░░░░░▄▀▀░▐",
-        "░░░░▄▀░░░░░░░░▐░▄▄▀ ",
-        "░░▄▀░░░▐░░░░░█▄▀░▐ ",
-        "░░█░░░▐░░░░░░░░▄░█ ",
-        "░░░█▄░░▀▄░░░░▄▀▐░█ ",
-        "░░░█▐▀▀▀░▀▀▀▀░░▐░█ ",
-        "░░▐█▐▄░░▀░░░░░░▐░█▄▄",
-        "░░░▀▀░GOTCHA░░░░▐▄▄▄▀"
-      ]
-      setTimeout(mariotakingshit, 3000);
-    }
-
     if(message.content == '!pony') {
       var voiceChannel = message.member.voiceChannel;
       voiceChannel.join().then(connection =>{
@@ -57,9 +21,14 @@ client.on('message', (message) => {
         })
       })
         }
-
+        if(message.content == '!cringe') {
+          var fs = require('fs');
+          var cringe = fs.readFileSync('cringe.txt').toString().split("\n");
+          var rnd = Math.floor(Math.random() * 9);
+          message.channel.send(cringe[rnd]);
+        }
       })
 
 
 client.login(process.env.BOT_TOKEN); //make the bot appear
-//
+//process.env.BOT_TOKEN

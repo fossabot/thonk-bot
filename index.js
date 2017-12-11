@@ -32,6 +32,10 @@ client.on('message', (message) => {
           var rnd = Math.floor(Math.random() * 21);
           message.channel.send(cringe[rnd]);
         }
+
+        if(message.content == config.prefix + 'hot') {
+          message.channel.send('OMFG SO FUCKING HOTOTOTOTOTO JINFASDJKLFASJKLADSJADJ - <@161973479858503680>')
+        }
       })
 
 

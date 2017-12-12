@@ -42,11 +42,6 @@ client.on('message', (message) => {
           message.channel.send('OMFG SO FUCKING HOTOTOTOTOTO JINFASDJKLFASJKLADSJADJ - <@161973479858503680>');
         }
 
-        if(message.content == config.prefix + 'eason') {
-          message.channel.send('love ya <@286091895124525057>');
-          message.channel.send({file: "https://minotar.net/avatar/EasonBC.png"});
-        }
-
         if(message.content == config.prefix + 'asciiart') {
 
         }

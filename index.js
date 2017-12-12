@@ -2,13 +2,19 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
-var onBusy = false;
+
+
 client.on("ready", function() {
-  console.log('Ready!');
+  console.log('Ready! Logged as ${bot.user.tag} pn ${bot.guilds.size} servers');
+  client.user.setGame('t!help | ${bot.guilds.size} servers')
 })
 
 client.on('message', (message) => {
   if(!message.guild) return; //cuz we dont want dm
+  if(message.author.bot || !msg.content.startsWith(config.prefix)); //to prevent chaos happen
+  const args = message.content.slice(cfg.prefix.length).split(/ +/);
+  const cmd = args.shift().toLowerCase();
+
     if(message.content == 'kys') {
       message.reply('Alright, thats really rude.');
     }

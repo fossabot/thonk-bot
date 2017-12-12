@@ -2,8 +2,8 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
-
-bot.on("ready", function() {
+var onBusy = false;
+client.on("ready", function() {
   console.log('Ready!');
 })
 
@@ -34,10 +34,20 @@ client.on('message', (message) => {
         }
 
         if(message.content == config.prefix + 'hot') {
-          message.channel.send('OMFG SO FUCKING HOTOTOTOTOTO JINFASDJKLFASJKLADSJADJ - <@161973479858503680>')
+          message.channel.send('OMFG SO FUCKING HOTOTOTOTOTO JINFASDJKLFASJKLADSJADJ - <@161973479858503680>');
+        }
+
+        if(message.content == config.prefix + 'eason') {
+          message.channel.send('love ya <@286091895124525057>');
+          message.channel.send({file: "https://minotar.net/avatar/EasonBC.png"});
+        }
+
+        if(message.content == config.prefix + 'asciiart') {
+
         }
       })
 
 
 client.login(process.env.BOT_TOKEN); //make the bot appear
 //process.env.BOT_TOKEN
+

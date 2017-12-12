@@ -16,6 +16,11 @@ client.on('message', (message) => {
     if(message.content == 'whos the best pony?') {
       message.reply('Celestia is da best pony!!/!!!!!');
     }
+
+    if(message.content == config.prefix + 'help') {
+      message.reply('im too lazy to make one so https://hastebin.com/egubenobey.scala');
+    }
+
     if(message.content == config.prefix + 'pony') {
       var voiceChannel = message.member.voiceChannel;
       voiceChannel.join().then(connection =>{

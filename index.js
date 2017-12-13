@@ -4,7 +4,7 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
-const talkedRecently = new Set();
+
 
 client.on("ready", function() {
   console.log('Ready!');

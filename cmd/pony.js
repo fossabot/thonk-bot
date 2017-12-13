@@ -1,5 +1,4 @@
 exports.run = (discord, client, message, args) => {
-  if (pony = false) return;
     var voiceChannel = message.member.voiceChannel;
     message.reply('cancer activated, type t!pony again to cancel.')
       voiceChannel.join().then(connection =>{

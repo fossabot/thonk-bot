@@ -25,6 +25,6 @@ client.on('message', (message) => {
 });
 
 
-client.login('MzcxNjMwMjAxNTIxNTY5Nzky.DRKjaw.ZGjTT6rqnBuM1ymO6eAEreGckZc'); //make the bot appear
+client.login(process.env.BOT_TOKEN); //make the bot appear
 //process.env.BOT_TOKEN
 

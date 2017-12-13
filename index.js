@@ -34,6 +34,7 @@ client.on('message', (message) => {
           .addField('t!cringe', 'show a random image that will cringe your ass', true)
           .addField('t!hot', 'type it', true)
           .addField('t!thicc', 'T H I C C & WITH STYLE', true)
+          .addField('t!roll', 'roll a die', true)
       message.channel.send(help)
     }
 
@@ -65,12 +66,13 @@ client.on('message', (message) => {
           message.reply('it just a fucking lego copy you cunt')
         }
 
-        if(cmd = 'roll') {
-
+        if(cmd === 'roll') {
+          var rollrnd = Math.floor(Math.random() * 6) + 1
+          message.channel.send(message.author + ' rolled a ' + '`' + rollrnd + '`' + '!')
         }
       })
 
 
-client.login(process.env.BOT_TOKEN); //make the bot appear
+client.login('MzcxNjMwMjAxNTIxNTY5Nzky.DRFqWA.omW3oYIoApbqW4rwZ4tiwbf7MJg'); //make the bot appear
 //process.env.BOT_TOKEN
 

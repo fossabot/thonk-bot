@@ -1,8 +1,10 @@
+
+
 const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
-
+const talkedRecently = new Set();
 
 client.on("ready", function() {
   console.log('Ready!');
@@ -14,6 +16,7 @@ client.on('message', (message) => {
   if(message.author.bot || !message.content.startsWith(config.prefix)); //to prevent chaos happen
   const args = message.content.slice(config.prefix.length).split(/ +/);
   const cmd = args.shift().toLowerCase();
+  
 
     if(message.content == 'kys') {
       message.reply('Alright, thats really rude.');
@@ -30,6 +33,7 @@ client.on('message', (message) => {
           .setDescription('List of commands')
           .setFooter('there is also some stupid respond, go find it by yourself')
           .addField('t!help', 'ehhhhhh', true)
+          .addField('t!ping', 'ping the bot to see if the bot is online', true)
           .addField('t!pony', 'play a FUCKING mlp theme song on a channel that you currently on.', true)
           .addField('t!cringe', 'show a random image that will cringe your ass', true)
           .addField('t!hot', 'type it', true)
@@ -70,9 +74,26 @@ client.on('message', (message) => {
           var rollrnd = Math.floor(Math.random() * 6) + 1
           message.channel.send(message.author + ' rolled a ' + '`' + rollrnd + '`' + '!')
         }
+
+        if (cmd === 'ping') {
+          const then = Date.now();
+          message.channel.send('pinging...').then(m => {
+            var time = Date.now() - then
+            m.edit('Hi im alive! Took ' + '`' + time + 'ms`' + ' to ping.')
+          });
+        }
+
+        if(cmd === 'troll') {
+          message.reply('nice typo!');
+        }
+
+        if(cmd === 'dm') {
+          let dmMessage = args[0];
+          message.author.send(dmMessage + ' `sent from t!dm`')
+        }
       })
 
 
-client.login(process.env.BOT_TOKEN); //make the bot appear
+client.login('MzcxNjMwMjAxNTIxNTY5Nzky.DRKTew.6kCWssptqa8bQYTnv4iNZpNhFYg'); //make the bot appear
 //process.env.BOT_TOKEN
 

@@ -5,14 +5,14 @@ const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
 
 
 client.on("ready", function() {
-  console.log('Ready! Logged as ${bot.user.tag} pn ${bot.guilds.size} servers');
-  client.user.setGame('t!help | ${bot.guilds.size} servers')
+  console.log('Ready!');
+  client.user.setGame('t!help')
 })
 
 client.on('message', (message) => {
   if(!message.guild) return; //cuz we dont want dm
-  if(message.author.bot || !msg.content.startsWith(config.prefix)); //to prevent chaos happen
-  const args = message.content.slice(cfg.prefix.length).split(/ +/);
+  if(message.author.bot || !message.content.startsWith(config.prefix)); //to prevent chaos happen
+  const args = message.content.slice(config.prefix.length).split(/ +/);
   const cmd = args.shift().toLowerCase();
 
     if(message.content == 'kys') {
@@ -23,32 +23,49 @@ client.on('message', (message) => {
       message.reply('Celestia is da best pony!!/!!!!!');
     }
 
-    if(message.content == config.prefix + 'help') {
-      message.reply('im too lazy to make one so https://hastebin.com/egubenobey.scala');
+    if(cmd === 'help') {
+      var help = new discord.RichEmbed()
+          .setColor('ORANGE')
+          .setAuthor('TRIGGEREDDDDDDDDDDDD', 'https://cdn.discordapp.com/avatars/371630201521569792/ccd89854391742d0a5adf43fbc813471.png')
+          .setDescription('List of commands')
+          .setFooter('there is also some stupid respond, go find it by yourself')
+          .addField('t!help', 'ehhhhhh', true)
+          .addField('t!pony', 'play a FUCKING mlp theme song on a channel that you currently on.', true)
+          .addField('t!cringe', 'show a random image that will cringe your ass', true)
+          .addField('t!hot', 'type it', true)
+          .addField('t!thicc', 'T H I C C & WITH STYLE', true)
+      message.channel.send(help)
     }
 
-    if(message.content == config.prefix + 'pony') {
+    if(cmd == 'pony') {
       var voiceChannel = message.member.voiceChannel;
       voiceChannel.join().then(connection =>{
         const dispatcher = connection.playFile('./media/shit.mp3') //this is a fucking mlp theme song if you wondering
-        message.reply('Cancer activated, type !pony again to cancel');
         dispatcher.on("end", end => {
           voiceChannel.leave();
         })
       })
         }
-        if(message.content == config.prefix + 'cringe') {
+        if(cmd === 'cringe') {
           var fs = require('fs');
           var cringe = fs.readFileSync('cringe.txt').toString().split("\n");
           var rnd = Math.floor(Math.random() * 21);
           message.channel.send(cringe[rnd]);
         }
 
-        if(message.content == config.prefix + 'hot') {
+        if(cmd === 'hot') {
           message.channel.send('OMFG SO FUCKING HOTOTOTOTOTO JINFASDJKLFASJKLADSJADJ - <@161973479858503680>');
         }
 
-        if(message.content == config.prefix + 'asciiart') {
+        if(cmd === 'thicc') {
+          message.channel.send('https://gfycat.com/AnnualMediocreJumpingbean')
+        }
+
+        if(message.content.startsWith('roblox')) {
+          message.reply('it just a fucking lego copy you cunt')
+        }
+
+        if(cmd = 'roll') {
 
         }
       })

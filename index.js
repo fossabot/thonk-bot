@@ -73,6 +73,6 @@ client.on('message', (message) => {
       })
 
 
-client.login('MzcxNjMwMjAxNTIxNTY5Nzky.DRFqWA.omW3oYIoApbqW4rwZ4tiwbf7MJg'); //make the bot appear
+client.login(process.env.BOT_TOKEN); //make the bot appear
 //process.env.BOT_TOKEN
 

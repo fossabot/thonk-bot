@@ -22,6 +22,22 @@ client.on('message', (message) => {
   } catch (err) {
     console.error(err);
   }
+
+  if (message.content.startsWith('kys')) {
+    message.reply('fucking bitch stop being a faggot.')
+  }
+
+  if (message.content.startsWith('roblox')) {
+    message.reply('it just a fucking lego copy you cunt.')
+  }
+
+  if(message.content.startsWith('mtr')) {
+    message.reply(`can't find respond "mtr", you mean kcr?`)
+  } 
+
+  if(message.content.startsWith('wat')) {
+    message.reply('next time think twice before you type pls')
+  }
 });
 
 

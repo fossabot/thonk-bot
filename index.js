@@ -38,6 +38,10 @@ client.on('message', (message) => {
   if(message.content.startsWith('wat')) {
     message.reply('next time think twice before you type pls')
   }
+
+  if(message.content.startsWith('kms')) {
+    message.reply({file: "https://cdn.discordapp.com/attachments/372799355385675777/390844751722708992/kms.png"})
+  }
 });
 
 

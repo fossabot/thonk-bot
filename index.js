@@ -4,7 +4,7 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
-var respondFile = require(`./responds.js`);
+var respondFile = require(`./cfg/responds.js`);
 
 client.on("ready", function() {
   console.log('Ready!');

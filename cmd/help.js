@@ -2,8 +2,8 @@
 
 exports.run = (discord, client, message, args) => {
     var help = new discord.RichEmbed()
-          .setColor('ORANGE')
-          .setAuthor('TRIGGEREDDDDDDDDDDDD', 'https://cdn.discordapp.com/avatars/371630201521569792/ccd89854391742d0a5adf43fbc813471.png')
+          .setColor([139, 69, 19])
+          .setAuthor('Hitler', 'https://cdn.discordapp.com/avatars/386818562796290050/d41c101b6fa7abd7a014c90fb73ad23b.png')
           .setDescription('List of commands')
           .setFooter('there is also some stupid respond, go find it by yourself')
           .addField('t!help', 'ehhhhhh, O O F', true)
@@ -13,5 +13,6 @@ exports.run = (discord, client, message, args) => {
           .addField('t!hot', 'type it', true)
           .addField('t!thicc', 'T H I C C & WITH STYLE', true)
           .addField('t!roll', 'roll a die', true)
+          .addField('t!rnd', 'generate a random integer. Usage: `t!rnd <min> <max>`')
       message.channel.send(help);
 }

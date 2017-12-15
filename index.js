@@ -3,7 +3,7 @@
 const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
+const config = JSON.parse(fs.readFileSync("./cfg/config.json", "utf8"));
 var respondFile = require(`./cfg/responds.js`);
 
 client.on("ready", function() {
@@ -23,6 +23,6 @@ client.on('message', (message) => {
     console.error(err);
   }
 });
-client.login('MzcxNjMwMjAxNTIxNTY5Nzky.DRQHSg.MGuT6EZonQvHrc2bU1cQS4OvQN4'); //make the bot appear
-//process.env.BOT_TOKEN
+client.login(process.env.BOT_TOKEN); //make the bot appear
+
 

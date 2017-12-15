@@ -1,5 +1,5 @@
-
-#hitler-bot - probably the worst discord bot, ever.
+#hitler-bot
+## probably the worst discord bot, ever.
 bot that coded for bleach nation server, for memes.
 
 ## Requirements

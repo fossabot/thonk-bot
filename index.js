@@ -25,7 +25,7 @@ client.on('message', (message) => {
 
   try {
     let cmdFile = require(`./cmd/${command}.js`);
-    cmdFile.run(discord, client, message, args, clbot, rndCat);
+    cmdFile.run(discord, client, message, args, rndCat);
   } catch (err) {
     console.error(err);
   }

@@ -18,10 +18,14 @@
   },
   "homepage": "https://github.com/thesimpleblock/discord-bot#readme",
   "dependencies": {
+    "cleverbot.io": "^1.0.4",
     "discord.js": "^11.2.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "json-variables": "^4.6.1",
     "opusscript": "0.0.4",
     "random-cat": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
   }
 }

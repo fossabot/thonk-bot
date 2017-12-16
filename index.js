@@ -20,7 +20,7 @@ client.on('message', (message) => {
   const command = args.shift().toLowerCase();
 
   if(respondFile[message.content]) {
-    message.reply(respondFile[message.content])
+    message.channel.send(respondFile[message.content])
   }
 
   try {

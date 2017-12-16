@@ -5,6 +5,7 @@ const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./cfg/config.json", "utf8"));
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
+const rndCat = require('random-cat')
 
 client.on("ready", function() {
   console.log('Ready!');
@@ -23,7 +24,7 @@ client.on('message', (message) => {
 
   try {
     let cmdFile = require(`./cmd/${command}.js`);
-    cmdFile.run(discord, client, message, args);
+    cmdFile.run(discord, client, message, args, rndCat);
   } catch (err) {
     console.error(err);
   }

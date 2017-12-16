@@ -20,6 +20,8 @@
   "dependencies": {
     "discord.js": "^11.2.1",
     "ffmpeg-binaries": "^3.2.2-3",
-    "opusscript": "0.0.4"
+    "json-variables": "^4.6.1",
+    "opusscript": "0.0.4",
+    "random-cat": "^1.0.1"
   }
 }

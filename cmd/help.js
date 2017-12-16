@@ -1,7 +1,7 @@
 
 
 exports.run = (discord, client, message, args) => {
-    var help = new discord.RichEmbed()
+    var help1 = new discord.RichEmbed()
           .setColor([139, 69, 19])
           .setAuthor('Hitler', 'https://cdn.discordapp.com/avatars/386818562796290050/d41c101b6fa7abd7a014c90fb73ad23b.png')
           .setDescription('List of commands')
@@ -14,5 +14,6 @@ exports.run = (discord, client, message, args) => {
           .addField('t!thicc', 'T H I C C & WITH STYLE', true)
           .addField('t!roll', 'roll a die', true)
           .addField('t!rnd', 'generate a random integer. Usage: `t!rnd <min> <max>`')
-      message.channel.send(help);
+          .addField('t!cat', 'show a random cat image')
+      message.channel.send(help1);
 }

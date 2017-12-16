@@ -14,6 +14,7 @@ exports.run = (discord, client, message, args) => {
           .addField('t!thicc', 'T H I C C & WITH STYLE', true)
           .addField('t!roll', 'roll a die', true)
           .addField('t!rnd', 'generate a random integer. Usage: `t!rnd <min> <max>`')
+          .addField('t!ryandrawing', "show ryan's drawing", true)
           .addField('t!cat', 'show a random cat image')
       message.channel.send(help1);
 }

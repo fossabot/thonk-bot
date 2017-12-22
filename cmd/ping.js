@@ -7,7 +7,7 @@ exports.run = (discord, client, message, args, config, fs) => {
       m.edit(`${time}ms`)
 })
     } else if (args[0] === 'cleverbot') {
-      if (message.author.id !== config) {
+      if (message.author.id !== global.config) {
         message.reply("You don't have permission to use this command!");
         return;
       }

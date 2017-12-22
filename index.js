@@ -4,6 +4,7 @@ const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./cfg/config.json", "utf8"));
+global.config = config
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
 const rndCat = require('random-cat')
 
@@ -15,7 +16,7 @@ client.on("ready", function() {
 
 client.on('message', (message) => {
   if(!message.guild) return; //cuz we dont want dm
-  if(message.author.bot || !message.content.startsWith(config.prefix)); //to prevent chaos happen
+  if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
   const args = message.content.slice(config.prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 

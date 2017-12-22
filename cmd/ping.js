@@ -1,4 +1,4 @@
-exports.run = (discord, client, message, args, config, fs) => {
+exports.run = (discord, client, message, args) => {
     let option = args[0]
     if (!args.length) {
       const then = Date.now();
@@ -7,7 +7,7 @@ exports.run = (discord, client, message, args, config, fs) => {
       m.edit(`${time}ms`)
 })
     } else if (args[0] === 'cleverbot') {
-      if (message.author.id !== global.config) {
+      if (message.author.id !== global.config.ownerID) {
         message.reply("You don't have permission to use this command!");
         return;
       }

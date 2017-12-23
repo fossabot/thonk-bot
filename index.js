@@ -6,7 +6,6 @@ const fs = require('fs');
 const config = JSON.parse(fs.readFileSync("./cfg/config.json", "utf8"));
 global.config = config
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
-const rndCat = require('random-cat')
 
 
 client.on("ready", function() {
@@ -26,7 +25,7 @@ client.on('message', (message) => {
 
   try {
     let cmdFile = require(`./cmd/${command}.js`);
-    cmdFile.run(discord, client, message, args, rndCat);
+    cmdFile.run(discord, client, message, args);
   } catch (err) {
     console.error(err);
   }

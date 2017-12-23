@@ -1,4 +1,5 @@
-exports.run = (discord, client, message, args, rndCat) => {
+const rndCat = require('random-cat')
+exports.run = (discord, client, message, args) => {
     var url = rndCat.get();
         var embed = new discord.RichEmbed()
             .setColor('GREEN')

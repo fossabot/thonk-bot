@@ -15,7 +15,6 @@ client.on("ready", function() {
 
 client.on('message', (message) => {
   if(!message.guild) return; //cuz we dont want dm
-  if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
   const args = message.content.slice(config.prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
@@ -24,6 +23,7 @@ client.on('message', (message) => {
   }
 
   try {
+    if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
     let cmdFile = require(`./cmd/${command}.js`);
     cmdFile.run(discord, client, message, args);
   } catch (err) {

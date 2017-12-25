@@ -5,7 +5,7 @@ exports.run = (discord, client, message, args) => {
     } else if (num < 2 || num > 100) {
         return message.reply('please enter a number between 2 and 100')
     } else if (!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) {
-        return message.reply('i don\'t these following permission: `MANAGE_MESSAGES`')
+        return message.reply('I don\'t have these following permission: `MANAGE_MESSAGES`')
     }
 
     message.channel.bulkDelete(num, true)

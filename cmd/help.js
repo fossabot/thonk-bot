@@ -18,5 +18,5 @@ exports.run = (discord, client, message, args) => {
           .addField('t!cat', 'show a random cat image')
           .addField('Bot owner only', 't!eval t!ping cleverbot')
       message.reply('I sent you a telegram')
-      message.author.sendMessage(help1)
+      message.author.send(help1)
 }

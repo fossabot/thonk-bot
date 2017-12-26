@@ -11,7 +11,7 @@ const moji = require('moji-translate');
 
 client.on("ready", function() {
   console.log('Ready!');
-  client.user.setGame('t!help');
+  client.user.setGame('h.help');
 })
 
 client.on('message', (message) => {
@@ -21,7 +21,7 @@ client.on('message', (message) => {
   if(respondFile[message.content]) {
     message.channel.send(respondFile[message.content])
   }
-  client.emit("guildMemberAdd", message.member);
+
   try {
     if(!message.guild) return; //cuz we dont want dm
     if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen

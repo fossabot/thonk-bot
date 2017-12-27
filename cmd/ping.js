@@ -4,7 +4,7 @@ exports.run = (discord, client, message, args) => {
       const then = Date.now();
     message.channel.send('pinging...').then(m => {
       var time = Date.now() - then
-      m.edit(`Pong! ${time}ms`)
+      m.edit(`:ping_pong: Pong! ${time}ms (Heartbeat: ${client.ping})`)
 })
     } else if (args[0] === 'cleverbot') {
       if (message.author.id !== global.config.ownerID) {

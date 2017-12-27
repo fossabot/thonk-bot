@@ -9,6 +9,12 @@ const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
 const talkedRecently = new Set();
 const moji = require('moji-translate');
 
+client.on('guildMemberAdd', function(member) {
+  const guild = member.guild;
+  member.guild.channels.find('topic', '-welcome-channel-').send(`Hello ${member}! Welcome to **${guild.name}**`)
+})
+
+
 client.on("ready", function() {
   console.log('Ready!');
   client.user.setGame('h.help');

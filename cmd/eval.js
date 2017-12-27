@@ -1,5 +1,5 @@
 exports.run = (discord, client, message, args) => {
-    if(message.author.id !== config.ownerID) return;
+    if(message.author.id !== config.ownerID) return message.reply('you don\'t have permission to use this command!');
     try {
     const clean = text => {
             if (typeof(text) === "string")

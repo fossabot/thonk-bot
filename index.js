@@ -7,7 +7,6 @@ const config = JSON.parse(fs.readFileSync("./cfg/config.json", "utf8"));
 global.config = config
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
 const talkedRecently = new Set();
-const moji = require('moji-translate');
 
 client.on('guildMemberAdd', function(member) {
   const guild = member.guild;
@@ -37,7 +36,7 @@ client.on('message', (message) => {
       talkedRecently.delete(message.author.id);
     }, 3000);
     let cmdFile = require(`./cmd/${command}.js`);
-    cmdFile.run(discord, client, message, args, moji);
+    cmdFile.run(discord, client, message, args);
   } catch (err) {
     console.error(err);
   }

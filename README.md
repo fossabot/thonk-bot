@@ -2,7 +2,7 @@
 
 bot that coded for bleach nation server, for memes.
 
-## Requirements
+##Requirements
 - `node` [Latest Version](https://nodejs.org)
 - `discord.js` (https://discord.js.org/#/)
 - `ffmpeg-binaries` (https://www.npmjs.com/package/ffmpeg-binaries)

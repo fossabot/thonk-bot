@@ -1,13 +1,18 @@
-exports.run = (discord, client, message, args) => {
+const discord = require('discord.js')
+const client = new discord.Client()
+module.exports = {
+  name: 'ping',
+  info: 'ehh.. like the ping and then pong? hmmm',
+  execute(message, args) {
     let option = args[0]
     if (!args.length) {
       const then = Date.now();
-    message.channel.send('pinging...').then(m => {
+    message.channel.send('ping? \:thinking:').then(m => {
       var time = Date.now() - then
-      m.edit(`:ping_pong: Pong! ${time}ms (Heartbeat: ${client.ping})`)
+      m.edit(`:ping_pong: Pong! ${time}ms`)
 })
     } else if (args[0] === 'cleverbot') {
-      if (message.author.id !== global.config.ownerID) {
+      if (message.author.id !== config.ownerID) {
         message.reply("You don't have permission to use this command!");
         return;
       }
@@ -26,4 +31,5 @@ exports.run = (discord, client, message, args) => {
         });
       })
     }
+  }
 }

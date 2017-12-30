@@ -1,4 +1,8 @@
-exports.run = (discord, client, message, args) => {
+module.exports = {
+  name: 'pony',
+  info: 'play mlp theme in your voice channel xddd',
+  guildOnly: true,
+  execute(message, args){
     var voiceChannel = message.member.voiceChannel;
     message.reply('cancer activated, type t!pony again to cancel.')
       voiceChannel.join().then(connection =>{
@@ -7,4 +11,5 @@ exports.run = (discord, client, message, args) => {
           voiceChannel.leave();
         })
       })
+  }
 }

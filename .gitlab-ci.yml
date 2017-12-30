@@ -1,6 +1,0 @@
-image: node:8
-
-all_tests:
-  script:
-   - npm install
-   - node .

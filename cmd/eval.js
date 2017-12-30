@@ -1,4 +1,9 @@
-exports.run = (discord, client, message, args) => {
+
+module.exports = {
+  name: "eval",
+  info: "eval a code (BOT\'S OWNER ONLY)",
+  args: true,
+  execute(message, args) {
     if(message.author.id !== config.ownerID) return message.reply('you don\'t have permission to use this command!');
     try {
     const clean = text => {
@@ -18,3 +23,4 @@ exports.run = (discord, client, message, args) => {
       message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
     }
   }
+}

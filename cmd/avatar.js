@@ -1,8 +1,8 @@
 module.exports = {
     name: 'avatar',
     info: 'Show a avatar of a user',
-    usage: 'h.avatar <mention of a user>',
-    args: true,
+    usage: '<user>',
+    aliases: ['icon', 'pfp'],
     execute(message, args) {
         let user = message.mentions.users.first();
         if (!user) user = message.author

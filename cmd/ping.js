@@ -1,10 +1,9 @@
-
+const discord = require('discord.js')
+const client = new discord.Client()
 module.exports = {
   name: 'ping',
   info: 'ehh.. like the ping and then pong? hmmm',
   execute(message, args) {
-    const discord = require('discord.js')
-    const client = new discord.Client()
     let option = args[0]
     if (!args.length) {
       const then = Date.now();

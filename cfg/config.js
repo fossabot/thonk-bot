@@ -1,5 +1,5 @@
 module.exports = {
-    prefix: "?",
+    prefix: "beta-",
     ownerID: "146078184260108288",
     tokens: {
         bot: process.env.BOT_TOKEN,

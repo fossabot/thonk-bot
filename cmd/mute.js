@@ -3,14 +3,13 @@ const client = new discord.Client();
 module.exports = {
     name: "mute",
     info: "mute a mentioned user",
-    usage: "h.mute <mentioned user> [reason]",
+    usage: "<mentioned user> [reason]",
     guildOnly: true,
     args: true,
     async execute(message, args) {
         if (!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply('you don\'t have permission to use this command!')
         let toMute = message.guild.member(message.mentions.users.first());
         let reason = args.slice(1).join(' ')
-        if (!toMute) return message.reply('you did\'t specify a user to mute!')
         if (toMute === message.author.id) return message.reply('why you\'re trying to mute yourself?')
         if (toMute.highestRole.position >= message.member.highestRole.position) return message.reply('you can\'t mute a member who is higher or has the same role as you!')
         

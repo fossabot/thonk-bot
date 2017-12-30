@@ -1,10 +1,11 @@
 
 module.exports = {
   name: "eval",
-  info: "eval a code (BOT\'S OWNER ONLY)",
+  info: "executes javascript code",
+  usage: "<code>",
   args: true,
+  ownerOnly: true,
   execute(message, args) {
-    if(message.author.id !== config.ownerID) return message.reply('you don\'t have permission to use this command!');
     try {
     const clean = text => {
             if (typeof(text) === "string")

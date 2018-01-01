@@ -17,6 +17,7 @@ const sequelize = new Sequelize('database', 'user', 'password', {
   dialect: 'mysql',
   logging: false,
 });
+global.sequelize = sequelize
 for (const file of cmdFiles) {
   const cmd = require(`./cmd/${file}`)
   client.commands.set(cmd.name, cmd)

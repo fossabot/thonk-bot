@@ -14,7 +14,7 @@ module.exports = {
         var msg = new discord.RichEmbed()
             .setColor('RANDOM')
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL)
-            .setThumbnail('http://img2.ctoutiao.com/uploads/2016/03/16/d99d884a37da745e11fa7094215f5c91.jpg')
+            .setThumbnail('https://i.imgur.com/6FS0nIp.jpg')
             .setDescription(`**You:** ${question} \n\n**Trump: ${answer}**`)
         message.channel.send(msg)
     }

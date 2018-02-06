@@ -1,7 +1,6 @@
 exports.run = (client, message, respondFile, talkedRecently, config) => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
-  
     if(respondFile[message.content]) {
       message.channel.send(respondFile[message.content])
     }

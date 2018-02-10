@@ -6,7 +6,7 @@ module.exports = {
     guildOnly: true,
     args: true,
     execute (message, args){
-        if (!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply('you don\'t have permission to use this command!')
+        if (!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return message.reply('you don\'t have permission to use this command!')
         let option = args[0]
         switch (args[0]) {
             case "logChannel":

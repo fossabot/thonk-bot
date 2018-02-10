@@ -58,3 +58,6 @@ typings/
 .env
 debug.sh
 .md
+
+#sqlite database
+database.sqlite

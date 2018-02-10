@@ -29,6 +29,6 @@ fs.readdir("./events/", (err, files) => {
 
 
 
-client.login(config.tokens.bot); 
+client.login(config.tokens.bot); // nigger don't fucking leak token again
 
 

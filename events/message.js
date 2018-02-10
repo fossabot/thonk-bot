@@ -1,10 +1,12 @@
+const db = require('quick.db')
 exports.run = (client, message, respondFile, talkedRecently, config) => {
+
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
       message.channel.send(respondFile[message.content])
     }
-  
+
     if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
   
     if (talkedRecently.has(message.author.id)) return message.reply('u have to wait 3 seconds!!!111!');
@@ -25,7 +27,6 @@ exports.run = (client, message, respondFile, talkedRecently, config) => {
       if (message.author.id !== config.ownerID) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`)
     }
     try {
-      message.delete();
       command.execute(message, args);
     } catch (err) {
       console.error(err);

@@ -2,15 +2,15 @@
 
 const discord = require('discord.js'); //add discord.js idk
 const client = new discord.Client();
-global.discord = discord;
-global.client = client;
 const fs = require('fs');
 const config = require('./cfg/config.js')
-global.config = config
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
 const talkedRecently = new Set();
-client.commands = new discord.Collection();
 const cmdFiles = fs.readdirSync('./cmd');
+client.commands = new discord.Collection();
+global.client = client;
+global.config = config
+global.discord = discord;
 
 for (const file of cmdFiles) {
   const cmd = require(`./cmd/${file}`)

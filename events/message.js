@@ -1,10 +1,10 @@
 const db = require('quick.db')
 exports.run = (client, message, respondFile, talkedRecently, config) => {
-
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
       message.channel.send(respondFile[message.content])
+      console.log(`${message.author.username} trigger the bot with response '${message.content}`)
     }
 
     if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
@@ -23,11 +23,10 @@ exports.run = (client, message, respondFile, talkedRecently, config) => {
       if (command.usage) reply += `\nThe proper usage would be: \`${config.prefix}${command.name} ${command.usage}\``
       return message.channel.send(reply)
     }
-    if (command.ownerOnly) {
-      if (message.author.id !== config.ownerID) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`)
-    }
+    if (command.ownerOnly && message.author.id !== config.ownerID) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`)
     try {
       command.execute(message, args);
+      console.log(`${message.author.username} used the command '${command.name}' `)
     } catch (err) {
       console.error(err);
     }

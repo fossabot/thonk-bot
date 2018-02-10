@@ -1,4 +1,5 @@
 const discord = require('discord.js')
+const db = require('quick.db')
 module.exports = {
     name: 'warn',
     info: 'issue a *friendly* warning to a mentioned user',
@@ -13,12 +14,14 @@ module.exports = {
         if (!reason) return message.reply('you didn\'t provide a reason to warn this user!')
         if (message.guild.member(message.author).roles.position <= toWarn.roles.position) return message.reply('you can\'t warn a member who is higher or has the same role as you!');
         toWarn.send(`You have been warned in **${message.guild.name}** by **${message.author.username}** \n**Reason**: ${reason}`);
-        message.reply(`✅ **${toWarn.user.username} is warned**`)
-        if (!message.guild.channels.find('topic', '-mod-log-')) return message.reply('Seems there\'s no mod log channel, I recommend you add a mod-log by adding `-mod-log-` as topic in your decided channel')
+        message.channel.send(`✅ **${toWarn.user.username} is warned**`)
         var embed = new discord.RichEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL)
             .setTitle('A member is warned!')
             .setDescription(`**Username :** ${toWarn}\n**Reason :${reason}**`)
-        message.guild.channels.find('topic', '-mod-log-').send(embed)
+        db.fetchObject(`modChannel_${message.guild.id}`).then(i => {
+            if (!i || i === 'none') return console.log('a guild didn\'t set a moderation chaheane')
+            message.guild.channels.get(i.text).send(embed)
+        })
     }
 }

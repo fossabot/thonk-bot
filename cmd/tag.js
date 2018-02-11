@@ -1,4 +1,5 @@
 const db = require('quick.db')
+const discord = require('discord.js')
 module.exports = {
     name: 'tag',
     info: 'view a tag created by others',
@@ -8,7 +9,12 @@ module.exports = {
         let name = args[0]
         db.fetchObject(`tag_${name}`).then(i => {
             if (!i.text) return message.channel.send('The tag does not exist!')
-                else message.channel.send(i.text)
+                else {
+                    var embed = new discord.RichEmbed()
+                        .setColor(`RANDOM`)
+                        .setDescription(`**Tag name**: ${name}\n\n**Content**: ${i.text}`)
+                    message.channel.send(embed)
+                }
         })
     }
 }

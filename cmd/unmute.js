@@ -6,7 +6,7 @@ module.exports = {
     info: "unmute a mentioned user that is muted",
     args: true,
     guildOnly: true,
-    usage: "h.unmute <mentioned user> [reason]",
+    usage: "<mentioned user> [reason]",
     async execute (message, args) {
         if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply('you don\'t have permission to use this command!')
         let toUnMute = message.guild.member(message.mentions.users.first());

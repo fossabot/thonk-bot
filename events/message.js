@@ -1,14 +1,19 @@
 const db = require('quick.db')
+const config = require('../cfg/config.js')
 exports.run = (client, message, respondFile, talkedRecently, config) => {
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    let prefix = config.prefix
+    // db.fetchObject(`guildPrefix_${message.guild.id}`).then(i => {
+    //   if (i.text != null) prefix = config.prefix
+    //     else prefix = i.text
+    // })
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
       message.channel.send(respondFile[message.content])
       console.log(`${message.author.username} trigger the bot with response '${message.content}`)
     }
-
-    if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
-  
+    
+    if(message.author.bot || !message.content.startsWith(prefix)) return; //to prevent chaos and log spam happen
     if (talkedRecently.has(message.author.id)) return message.reply('u have to wait 3 seconds!!!111!');
     talkedRecently.add(message.author.id);
     setTimeout(() => {
@@ -20,7 +25,7 @@ exports.run = (client, message, respondFile, talkedRecently, config) => {
     if (command.guildOnly && message.channel.type !== 'text') return message.reply(`${message.author}, I can\'t execute that command inside DMs!`)
     if (command.args && !args.length) {
       let reply = `\:x: You didn\'t provide any arguments, ${message.author}!`
-      if (command.usage) reply += `\nThe proper usage would be: \`${config.prefix}${command.name} ${command.usage}\``
+      if (command.usage) reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``
       return message.channel.send(reply)
     }
     if (command.ownerOnly && message.author.id !== config.ownerID) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`)

@@ -61,7 +61,7 @@ module.exports = {
                 break
             case "response":
                 db.fetchObject(`response_${message.guild.id}`).then(i => {
-                    if(i.text === 'FALSE' || !i.text) {
+                    if(i.text === 'FALSE' || !i.text) { //for first-time guild
                         db.updateText(`response_${message.guild.id}`, 'TRUE')
                         message.channel.send(`**Successfully updated bot\'s response to on**`)
                     } else if (i.text === 'TRUE') {

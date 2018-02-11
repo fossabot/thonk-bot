@@ -10,10 +10,7 @@ module.exports = {
         db.fetchObject(`tag_${name}`).then(i => {
             if (!i.text) return message.channel.send('The tag does not exist!')
                 else {
-                    var embed = new discord.RichEmbed()
-                        .setColor(`RANDOM`)
-                        .setDescription(`**Tag name**: ${name}\n\n**Content**: ${i.text}`)
-                    message.channel.send(embed)
+                    message.channel.send(`**Tag name**: ${name}\n\n**Content**: ${i.text}`)
                 }
         })
     }

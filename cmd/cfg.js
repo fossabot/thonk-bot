@@ -33,21 +33,16 @@ module.exports = {
                                     db.fetchObject(`modChannel_${message.guild.id}`).then(modChannIDFetched => {
                                         if(!modChannIDFetched.text) modChannel = '*none*'
                                         else modChannel = message.guild.channels.get(modChannIDFetched.text)
-                                        db.fetchObject(`guildPrefix_${message.guild.id}`).then(prefixFetched => {
-                                            if(!prefixFetched.text) guildPrefix = '*h.*'
-                                            else guildPrefix = prefixFetched
                                             let response = `**Member Logging Channel**\n > ${channel}\n\n` 
                                             response += `**Moderation Logging Channel**\n > ${modChannel}\n\n`
                                             response += `**Welcome DM Text**\n > ${dmText}\n\n` 
                                             response += `**Welcome Channel Text**\n > ${joinText}\n\n` 
                                             response += `**Leave Channel Text**\n > ${leaveText}\n\n` 
                                             response += `**Auto role**\n > ${autoRole}\n\n`
-                                            response += `**Guild\'s Prefix**\n > ${guildPrefix}`
                                             var embed = new discord.RichEmbed()
                                                 .setDescription(response)
                                                 .setColor('RANDOM')
                                             message.channel.send(embed)
-                                        })
                                     })
 
                                 })

@@ -1,7 +1,8 @@
-
+const config = require('../cfg/config.js')
+const db = require('quick.db')
 module.exports = {
     name: 'help',
-    info: 'ehhhhh',
+    info: 'go help other not you',
     aliases: ['commands', 'cmds'],
     execute(message, args){
         const { commands } = message.client;

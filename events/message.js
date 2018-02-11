@@ -5,6 +5,7 @@ exports.run = (client, message, respondFile, talkedRecently) => {
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
       db.fetchObject(`response_${message.guild.id}`).then(i => {
+        if (!i.text) return db.updateText(`response_${message.guild.id}`, `FALSE`) //default is false
         if (i.text === 'FALSE') return
           else {
             message.channel.send(respondFile[message.content])

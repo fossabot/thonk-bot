@@ -6,7 +6,6 @@ module.exports = {
     args: true,
     guildOnly: true,
     usage: '<number from 2 - 100>',
-    aliases: ['pruge', 'bulkdelete'],
     execute(message, args){
         let num = args[0];
         if (isNaN(num)) {

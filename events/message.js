@@ -8,7 +8,7 @@ exports.run = (client, message, respondFile, talkedRecently) => {
         if (i.text === 'FALSE') return
           else {
             message.channel.send(respondFile[message.content])
-            console.log(`${message.author.username} trigger the bot with response '${message.content}`)
+            console.log(`${message.author.username} trigger the bot with response '${message.content}'`)
           }
       })
     }

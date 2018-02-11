@@ -45,7 +45,7 @@ module.exports = {
             case "leaveText":
                 let newLeaveText = args.slice(1).join(" ");
                 if(!newLeaveText) return message.channel.send('Please provide a message!')
-                if(newModChannel === 'none') newLeaveText = ''
+                if(newLeaveText === 'none') newLeaveText = ''
                 db.updateText(`leaveMessage_${message.guild.id}`, newLeaveText).then(i => {
                     message.channel.send(`Successfully changed welcome text to: \`${i.text}\``)
                 })

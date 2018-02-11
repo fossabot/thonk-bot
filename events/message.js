@@ -4,8 +4,13 @@ exports.run = (client, message, respondFile, talkedRecently) => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
-      message.channel.send(respondFile[message.content])
-      console.log(`${message.author.username} trigger the bot with response '${message.content}`)
+      db.fetchObject(`response_${message.guild.id}`).then(i => {
+        if (i.text === 'off' || i.text === 'false' || !i.text) return
+          else {
+            message.channel.send(respondFile[message.content])
+            console.log(`${message.author.username} trigger the bot with response '${message.content}`)
+          }
+      })
     }
     
     if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen

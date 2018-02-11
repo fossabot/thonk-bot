@@ -1,7 +1,7 @@
 const db = require('quick.db')
 module.exports = {
     name: 'editcfg',
-    info: 'Edit the bot\'s config, set the option as \'none\' to set the option as empty \nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nNote that option is __**CASE SENSITIVE**__',
+    info: 'Edit the bot\'s config, set the option as \'none\' to set the option as empty \nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nresponse: Toggle bot\'s responses\nNote that option is __**CASE SENSITIVE**__',
     usage: '<option> <value>',
     guildOnly: true,
     args: true,
@@ -58,6 +58,17 @@ module.exports = {
                 db.updateText(`modChannel_${message.guild.id}`, newModChannel).then(i => {
                     message.channel.send(`**Successfully updated moderation logging channel to ${message.mentions.channels.first()}**`)
                 }) 
+                break
+            case "response":
+                db.fetchObject(`response_${message.guild.id}`).then(i => {
+                    if(i.text === 'FALSE') {
+                        db.updateText(`response_${message.guild.id}`, 'TRUE')
+                        message.channel.send(`**Successfully updated bot\'s response to on**`)
+                    } else {
+                        db.updateText(`response_${message.guild.id}`, 'FALSE')
+                        message.channel.send(`**Successfully updated bot\'s response to off**`)
+                    }
+                })
                 break
             default:
                 message.channel.send('Please provide a option!\n**-----**\nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nprefix: Set a prefix for the bot \nNote that option is __**CASE SENSITIVE**__')

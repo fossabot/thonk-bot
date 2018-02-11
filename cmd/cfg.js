@@ -14,6 +14,7 @@ module.exports = {
         let autoRole
         let modChannel
         let guildPrefix
+        let responseToggle
         //woah look at this mess
             db.fetchObject(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
                 if (!message.guild.channels.get(channelIDFetched.text)) channel = '*none*'
@@ -33,16 +34,21 @@ module.exports = {
                                     db.fetchObject(`modChannel_${message.guild.id}`).then(modChannIDFetched => {
                                         if(!modChannIDFetched.text) modChannel = '*none*'
                                         else modChannel = message.guild.channels.get(modChannIDFetched.text)
+                                        db.fetchObject(`response_${message.guild.id}`).then(responseToggleFetched => {
+                                            if (!responseToggleFetched.text || responseToggleFetched.text === 'off' || responseToggleFetched.text === 'false') responseToggle = '*false*'
+                                                else responseToggle = responseToggleFetched.text
                                             let response = `**Member Logging Channel**\n > ${channel}\n\n` 
                                             response += `**Moderation Logging Channel**\n > ${modChannel}\n\n`
                                             response += `**Welcome DM Text**\n > ${dmText}\n\n` 
                                             response += `**Welcome Channel Text**\n > ${joinText}\n\n` 
                                             response += `**Leave Channel Text**\n > ${leaveText}\n\n` 
                                             response += `**Auto role**\n > ${autoRole}\n\n`
+                                            response += `**Dumb responses**\n > ${responseToggle}`
                                             var embed = new discord.RichEmbed()
                                                 .setDescription(response)
                                                 .setColor('RANDOM')
                                             message.channel.send(embed)
+                                        })
                                     })
 
                                 })

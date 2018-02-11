@@ -1,4 +1,13 @@
 # fuck travis ci
-machine:
-  node:
-    version: 8.9.3
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/8.9.4-stretch
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          command: npm test

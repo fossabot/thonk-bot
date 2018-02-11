@@ -2,10 +2,10 @@ const db = require('quick.db')
 const config = require('../cfg/config.js')
 exports.run = (client, message, respondFile, talkedRecently, config) => {
     let prefix = config.prefix
-    // db.fetchObject(`guildPrefix_${message.guild.id}`).then(i => {
-    //   if (i.text != null) prefix = config.prefix
-    //     else prefix = i.text
-    // })
+    db.fetchObject(`guildPrefix_${message.guild.id}`).then(i => {
+      if (i.text != null) prefix = config.prefix
+        else prefix = i.text
+    })
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {

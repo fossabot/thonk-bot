@@ -8,7 +8,7 @@ module.exports = {
         let name = args[0]
         let content = args.slice(1).join(" ")
         db.fetchObject(`tag_${name}`).then(i => {
-            if(i.text === name) return message.channel.send('The tag\'s name is already claimed!')
+            if(i.text) return message.channel.send('The tag\'s name is already claimed!')
                 else if (!content) return message.channel.send('Please provide content!')
                     else {
                         db.updateText(`tag_${name}`, content).then(i => {

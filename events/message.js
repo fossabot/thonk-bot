@@ -1,5 +1,6 @@
 const db = require('quick.db')
-exports.run = (client, message, respondFile, talkedRecently, config) => {
+const config = require('../cfg/config.js')
+exports.run = (client, message, respondFile, talkedRecently) => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {

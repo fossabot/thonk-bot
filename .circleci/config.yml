@@ -1,0 +1,17 @@
+# because im gayyyyy
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.20
+
+      steps:
+        - checkout
+
+        - run: npm install
+
+        -save_cache
+           paths:
+            - node_modules
+          
+        - run: npm test

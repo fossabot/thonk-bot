@@ -28,6 +28,6 @@ exports.run = (client, message, respondFile, talkedRecently) => {
       command.execute(message, args);
       console.log(`${message.author.username} used the command '${command.name}' `)
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
 }

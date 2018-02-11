@@ -64,7 +64,7 @@ module.exports = {
                     if(i.text === 'FALSE') {
                         db.updateText(`response_${message.guild.id}`, 'TRUE')
                         message.channel.send(`**Successfully updated bot\'s response to on**`)
-                    } else {
+                    } else if (i.text === 'TRUE') {
                         db.updateText(`response_${message.guild.id}`, 'FALSE')
                         message.channel.send(`**Successfully updated bot\'s response to off**`)
                     }

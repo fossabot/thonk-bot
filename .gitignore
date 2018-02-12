@@ -64,4 +64,5 @@ database.sqlite
 
 
 cfg/config.js
-cfg/response.json
+cfg/respond.json
+cfg/responds.json

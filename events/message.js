@@ -32,10 +32,8 @@ exports.run = (client, message, respondFile, talkedRecently) => {
     if (command.ownerOnly && message.author.id !== config.ownerID) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`)
     try {
       command.execute(message, args);
-      message.react("\412530243262218250") //green tick
       console.log(`${message.author.username} used the command '${command.name}' `)
     } catch (err) {
       console.log(err);
-      message.reach("\412530227198296065") //red tick
     }
 }

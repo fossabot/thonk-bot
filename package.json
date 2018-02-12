@@ -19,7 +19,6 @@
   "homepage": "https://github.com/tsblock/hitler-bot#readme",
   "dependencies": {
     "discord.js": "~11.2.1",
-    "node-opus": "^0.2.7",
     "quick.db": "^3.0.3",
     "react-trump": "^0.2.1",
     "sqlite3": "^3.1.13",

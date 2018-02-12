@@ -5,9 +5,9 @@ exports.run = (client, message, respondFile, talkedRecently) => {
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
       db.fetchObject(`response_${message.guild.id}`).then(i => {
-        if (i.text === 'FALSE' || !i.text) return
+        if (i.text === 'FALSE' || !i.text) return //since some guild dont want be annoyed k;lk
           else {
-            message.channel.send(respondFile[message.content])
+            message.channel.send(respondFile[message.content]) //and i make a glorious shit for your salty guild xdddddd
             console.log(`${message.author.username} trigger the bot with response '${message.content}'`)
           }
       })

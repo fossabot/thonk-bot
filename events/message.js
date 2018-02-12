@@ -25,7 +25,7 @@ exports.run = (client, message, respondFile, talkedRecently) => {
     if (!command) return
     if (command.guildOnly && message.channel.type !== 'text') return message.reply(`${message.author}, I can\'t execute that command inside DMs!`)
     if (command.args && !args.length) {
-      let reply = `<:redTick:409822922761437195> You didn\'t provide any arguments, ${message.author}!`
+      let reply = `\:x: You didn\'t provide any arguments, ${message.author}!`
       if (command.usage) reply += `\nThe proper usage would be: \`${config.prefix}${command.name} ${command.usage}\``
       return message.channel.send(reply)
     }

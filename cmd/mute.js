@@ -18,8 +18,8 @@ module.exports = {
         if(!role) { //add a mute role if there's no role in server
             try {
                 role = await message.guild.createRole({
-                    name: "h.mute",
-                    color: "#000000",
+                    name: "thonk mute",
+                    color: "#151515",
                     permission:[]
                 })
     

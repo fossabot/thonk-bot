@@ -14,7 +14,7 @@ module.exports = {
         if (toMute === message.author.id) return message.reply('why you\'re trying to mute yourself?')
         if (toMute.highestRole.position >= message.member.highestRole.position) return message.reply('you can\'t mute a member who is higher or has the same role as you!')
         
-        let role = message.guild.roles.find(r => r.name === "h.mute");
+        let role = message.guild.roles.find(r => r.name === "thonk mute");
         if(!role) { //add a mute role if there's no role in server
             try {
                 role = await message.guild.createRole({

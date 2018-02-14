@@ -9,10 +9,6 @@ module.exports = {
     execute(message ,args) {
         let toBet = args[0]
         if (isNaN(toBet)) return message.channel.send(`${toBet} is not a number!`)
-        db.fetchObject(`balance_${message.author.id}`).then(i => {
-            if (!i.value) return message.channel.send('You must create your own wallet by typing t.bal first!')
-            if (i.value < toBet) return message.channel.send('You don\'t have enough money to play slot!')
-        })
         const moneybag = new SlotSymbol('moneybag', {
             display: '💰',
             points: 150,
@@ -45,6 +41,10 @@ module.exports = {
 
         const machine = new SlotMachine(3, [moneybag, wild, onehundred, thonk, thenk])
         const r = machine.play()
+        db.fetchObject(`balance_${message.author.id}`).then(i => {
+            if (!i.value) return message.channel.send('You must create your own wallet by typing t.bal first!')
+            if (toBet > i.value) return message.channel.send('You don\'t have enough money to play slot!')
+        })
         db.updateValue(`balance_${message.author.id}`, r.winCount * toBet).then(i => {
             if (!r.winCount) {
                 db.updateValue(`balance_${message.author.id}`, -toBet)

@@ -10,7 +10,7 @@ module.exports = {
         if (isNaN(toGive)) return message.channel.send(`${toGive} is not a number!`)
         db.fetchValue(`balance_${message.author.id}`).then(i => {
             db.updateValue(`balance_${message.author.id}`, toGive).then(o => {
-                message.channel.send(`**Successfully updated your balance from ${i.value} to ${o.value}**`)
+                message.channel.send(`**Successfully updated your balance from ${i.value} to ${o.value} Happy debugging!!!**`)
             })
         })
     }

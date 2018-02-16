@@ -14,6 +14,8 @@ module.exports = {
             message.channel.send('Requesting... This might be take a while.').then(msg => {
                 cb.ask(toAsk, function(err, response) {
                     msg.edit(response)
+                }).catch(e => {
+                    message.channel.send(`Something went wrong! \`${e}\``)
                 })
             })
 

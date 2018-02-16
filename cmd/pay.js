@@ -10,6 +10,7 @@ module.exports = {
         let toPayAmount = args[1];
         if (isNaN(toPayAmount)) return message.channel.send(`${toPay} is not a number!`);
         if (message.author.id === toUser.id) return message.channel.send(`You can\'t pay to yourself!`);
+        if (toPayAmount < 0) return message.channel.send('You can\'t pay negative amount to a user!');
         db.fetchObject(`balance_${message.author.id}`).then(i => {
             if (toPayAmount > i.value) return message.channel.send('You don\'t have enough money to pay!');
             db.updateValue(`balance_${message.author.id}`, -toPayAmount).then(o => {

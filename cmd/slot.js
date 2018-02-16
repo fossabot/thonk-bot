@@ -9,6 +9,8 @@ module.exports = {
     execute(message ,args) {
         let toBet = args[0]
         if (isNaN(toBet)) return message.channel.send(`${toBet} is not a number!`)
+        if (toBet === 0) return message.channel.send('Why are you trying to bet nothing?')
+        if (toBet < 0) return message.channel.send('You can\'t bet a negative amount!');
         const moneybag = new SlotSymbol('moneybag', {
             display: '💰',
             points: 150,

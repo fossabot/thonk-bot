@@ -3,4 +3,4 @@
 bot that coded for bleach nation server, for memes.
 
 ## Requirements
-jeez just fucking view package.json you lazy dipshit
+jeez just fucking view package.json lololol

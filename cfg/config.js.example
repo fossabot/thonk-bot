@@ -1,7 +1,11 @@
 module.exports = {
     prefix: "PREFIX HERE",
-    ownerID: "YOUR ID HERE",
+    ownerID: "YOUR DISCORD USER ID HERE",
     tokens: {
-        bot: "TOKEN HERE"
+        bot: "BOT'S TOKEN HERE",
+        cleverbot_api: { //USE CLEVERBOT.IO TO GENERATE A USER AND KEY FOR YOUR BOT
+            user: "YOUR CLEVERBOT.IO USER HERE",
+            key: "YOUR CLEVERBOT.IO KEY HERE"
+        }
     },
 }

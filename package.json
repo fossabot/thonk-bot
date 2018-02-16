@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tsblock/hitler-bot#readme",
   "dependencies": {
+    "cleverbot.io": "^1.0.4",
     "discord.js": "~11.2.1",
     "moment": "^2.20.1",
     "quick.db": "^3.0.3",

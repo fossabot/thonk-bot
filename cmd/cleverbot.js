@@ -11,14 +11,16 @@ module.exports = {
     execute(message, args) {
         let toAsk = args.slice(0).join(" ");
         cb.create(function(err, session) {
-            message.channel.send('Requesting... This might be take a while.').then(msg => {
-                cb.ask(toAsk, function(err, response) {
-                    msg.edit(response)
-                }).catch(e => {
-                    message.channel.send(`Something went wrong! \`${e}\``)
-                })
+                message.channel.startTyping();
+                try {
+                    cb.ask(toAsk, function(err, response) {
+                        message.channel.send(response)
+                        message.channel.stopTyping();
+                    })
+                } catch (err) {
+                    message.channel.send('Something went wrong!')
+                }
             })
-
-        })
     }
+
 }

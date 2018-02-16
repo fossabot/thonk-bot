@@ -4,7 +4,19 @@ module.exports = {
     name: 'money',
     info: 'Show the balance of your wallet',
     aliases: ['bal', 'balance'],
+    usage: '[@user]',
     execute(message,args) {
+        let toCheck = message.guild.member(message.mentions.users.first());
+        if (toCheck) {
+            db.fetchObject(`balance_${toCheck.user.id}`).then(o => {
+                let what = new discord.RichEmbed()
+                .setDescription(`\:moneybag: **${toCheck.user.username}\'s balance**: $${o.value}`)
+                .setColor(`GREEN`)
+                .setFooter(`thonking bot`, 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png')
+                message.channel.send(what)
+            })
+            return;
+        }
         db.fetchObject(`balance_${message.author.id}`).then(i => {
             let bal
             if (i.value === null) { 
@@ -13,11 +25,13 @@ module.exports = {
                 })
             }
                 else bal = i.value
-            let embed = new discord.RichEmbed()
-                .setDescription(`\:moneybag: **Balance**: $${bal}`)
-                .setColor(`GREEN`)
-                .setFooter(`thonking bot`, 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png')
-            message.channel.send(embed)
+                    let embed = new discord.RichEmbed()
+                    .setDescription(`\:moneybag: **Balance**: $${bal}`)
+                    .setColor(`GREEN`)
+                    .setFooter(`thonking bot`, 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png')
+                    message.channel.send(embed)
+                
+
         })
     }
 }

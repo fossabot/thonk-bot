@@ -48,7 +48,7 @@ module.exports = {
             db.updateValue(`balance_${message.author.id}`, r.winCount * toBet).then(i => {
                 if (!r.winCount) {
                     db.updateValue(`balance_${message.author.id}`, -toBet)
-                    message.channel.send(`${r.visualize()} \n**You lost** $*${toBet}* dollars! Luckily you didn\'t lose your whole wallet... Better luck next time!`)
+                    message.channel.send(`${r.visualize()} \n**You lost** $*${toBet}* dollars, Better luck next time!`)
                 } else message.channel.send(`${r.visualize()} \n**You won**: $*${r.winCount * toBet}* \n\n**You now have**: $${i.value}`);
             })
         })

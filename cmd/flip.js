@@ -2,7 +2,7 @@ const db = require('quick.db')
 module.exports = {
     name: 'flip',
     info: 'flip a coin',
-    usage: '[dollars to bet] [tails / heads]',
+    usage: '<dollars to bet> <tails / heads>',
     args: true,
     execute (message, args) {
         let [toBet, tailsHeads] = args // noice shit bro

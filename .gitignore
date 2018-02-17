@@ -61,6 +61,7 @@ debug.sh
 
 #sqlite database
 database.sqlite
+arrays.sqlite
 
 
 cfg/config.js

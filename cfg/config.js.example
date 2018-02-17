@@ -8,4 +8,15 @@ module.exports = {
             key: "YOUR CLEVERBOT.IO KEY HERE"
         }
     },
+    items: {
+        price: {
+            ITEM ID HERE: PRICE HERE,
+            ITEM ID HERE: PRICE HERE
+        },
+        name: {
+            ITEM ID: "NAME HERE",
+            ITEM ID: "NAME HERE"
+        }
+    }
+    
 }

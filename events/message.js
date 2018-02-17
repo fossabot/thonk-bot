@@ -1,6 +1,10 @@
 const db = require('quick.db')
 const config = require('../cfg/config.js')
 exports.run = (client, message, respondFile, talkedRecently) => {
+    db.fetchArray(`inventory_${message.author.id}`).then(invFetched => {
+      if(invFetched.includes("1") && message.content.endsWith(" /r")) message.react("357315026283134976")
+      if (invFetched.includes("2") && message.content.endsWith(" /r")) message.react("377430402585067521")
+    })
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {

@@ -13,7 +13,7 @@ module.exports = {
             let shopList = new discord.RichEmbed() //This following here is hard-coded, you must set it by your own. I'll try make a configurable items list soon.
                 .setAuthor("Items list")
                 .setFooter("Thonking bot", 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png')
-                .addField('Reactions: \:kissing: ', 'React with a emoji everytime you send a message!', false)
+                .addField('Reactions: \:kissing: ', 'React with a emoji everytime you send a message! (Put "/r" end of your message to make the bot react)', false)
                 .addField('Broken Thumb <:broken_thumb:357315026283134976>', '**ID: 1 Price: $1500**', true)
                 .addField('L I T Joy <:wow:377430402585067521>', '**ID: 2 Price: $5000**', true)
             message.channel.send(shopList)

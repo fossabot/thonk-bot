@@ -5,6 +5,7 @@ exports.run = (client, message, respondFile, talkedRecently) => {
       if(invFetched.includes('1') && message.content.endsWith(' /r')) message.react('357315026283134976');
       if (invFetched.includes('2') && message.content.endsWith(' /r')) message.react('377430402585067521');
     });
+    if (message.content.includes('@everyone')) message.react('414702380924272665');
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {

@@ -10,7 +10,7 @@ module.exports = {
         ud.term(definition, function(error, entries) {
             if(error) return message.channel.send('Something went wrong!');
             const embed = new discord.RichEmbed()
-                .setAuthor(`Urban dictionary: ${definition}`, 'https://www.urbandictionary.com/favicon.ico', 'https://www.urbandictionary.com')
+                .setAuthor(`Urban dictionary: ${definition}`, 'http://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files/florianurban/icon/icon.png', 'https://www.urbandictionary.com')
                 .addField('Definition', entries[0].definition)
                 .addField('Example', entries[0].example)
                 .setColor('RANDOM')

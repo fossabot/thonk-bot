@@ -1,5 +1,5 @@
 module.exports = {
-  name: "eval",
+  name: 'eval',
   info: "executes javascript code",
   usage: "<code>",
   args: true,

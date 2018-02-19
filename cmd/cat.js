@@ -1,10 +1,10 @@
 const request = require('superagent');
 module.exports = {
     name: 'cat',
-    info: '\:cat:',
-    async execute(message, args) {
-        let {body} = await request
-        .get(`http://random.cat/meow`)
-        message.channel.send({file: body.file})
-    }
-}
+    info: '\:cat:', //eslint-disable-line no-useless-escape
+    async execute(message, args) { //eslint-disable-line no-unused-vars
+        const { body } = await request
+        .get('http://random.cat/meow');
+        message.channel.send({ file: body.file });
+    },
+};

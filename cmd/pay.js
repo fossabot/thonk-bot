@@ -1,4 +1,4 @@
-const db = require('quick.db')
+const db = require('quick.db');
 module.exports = {
     name: 'pay',
     info: 'give dollars to a user mentioned',
@@ -6,18 +6,18 @@ module.exports = {
     usage: '<@user> <dollars>',
     guildOnly: true,
     execute (message, args) {
-        let toUser = message.guild.member(message.mentions.users.first());
-        let toPayAmount = args[1];
-        if (isNaN(toPayAmount)) return message.channel.send(`${toPay} is not a number!`);
-        if (message.author.id === toUser.id) return message.channel.send(`You can\'t pay to yourself!`);
+        const toUser = message.guild.member(message.mentions.users.first());
+        const toPayAmount = args[1];
+        if (isNaN(toPayAmount)) return message.channel.send('${toPay} is not a number!');
+        if (message.author.id === toUser.id) return message.channel.send('You can\'t pay to yourself!');
         if (toPayAmount < 0) return message.channel.send('You can\'t pay negative amount to a user!');
         db.fetchObject(`balance_${message.author.id}`).then(i => {
             if (toPayAmount > i.value) return message.channel.send('You don\'t have enough money to pay!');
             db.updateValue(`balance_${message.author.id}`, -toPayAmount).then(o => {
-                db.updateValue(`balance_${toUser.id}`, toPayAmount).then(p => {
-                    message.channel.send(`Successfully paid **$${toPayAmount}** to **${toUser.user.username}**! \nYou now have: $${o.value}`)
-                })
-            })
-        })
-    }
-}
+                db.updateValue(`balance_${toUser.id}`, toPayAmount).then(() => {
+                    message.channel.send(`Successfully paid **$${toPayAmount}** to **${toUser.user.username}**! \nYou now have: $${o.value}`);
+                });
+            });
+        });
+    },
+};

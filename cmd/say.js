@@ -4,9 +4,9 @@ module.exports = {
     args: true,
     usage: '<message to say>',
     ownerOnly: true,
-    execute(message, args){
-        message.delete()
-        let messages = args.slice(0).join(" ")
-        message.channel.send(messages)
-    }
-}
+    execute(message, args) {
+        message.delete();
+        const messages = args.slice(0).join(' ');
+        message.channel.send(messages);
+    },
+};

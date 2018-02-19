@@ -15,7 +15,7 @@ module.exports = {
             .setDescription('**You already claimed your daily reward!**')
             .setFooter('thonking bot', 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png');
            if (!i.text) {
-               db.updateText(`lastDaily_${message.author.id}`, moment().format('L'))
+               db.updateText(`lastDaily_${message.author.id}`, moment().format('L'));
                db.updateValue(`balance_${message.author.id}`, 500).then(o => { //eslint-disable-line no-unused-vars
                    message.channel.send(success);
             });

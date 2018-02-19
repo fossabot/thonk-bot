@@ -12,7 +12,9 @@ module.exports = {
             const embed = new discord.RichEmbed()
                 .setTitle(`Urban dictionary: ${definition}`)
                 .addField('Definition', entries[0].definition)
-                .addField('Example', entries[0].example);
+                .addField('Example', entries[0].example)
+                .setColor('RANDOM')
+                .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL);
             message.channel.send(embed);
         });
     },

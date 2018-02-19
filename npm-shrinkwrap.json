@@ -2320,6 +2320,11 @@
       "resolved": "https://registry.npmjs.org/ultron/-/ultron-1.1.1.tgz",
       "integrity": "sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og=="
     },
+    "urban-dictionary": {
+      "version": "1.0.6",
+      "resolved": "https://registry.npmjs.org/urban-dictionary/-/urban-dictionary-1.0.6.tgz",
+      "integrity": "sha512-UhBZP5gW0d3xUjmToUCmILxMgznbSS3haQxlR3HwoYsAuZqkC31PxUlPMyF5h3GO4NYibquJkAjEUFL9Odr15A=="
+    },
     "util-deprecate": {
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",

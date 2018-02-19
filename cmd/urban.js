@@ -6,7 +6,7 @@ module.exports = {
     args: true,
     usage: '<word>',
     execute(message, args) { //eslint-disable-line no-unused-vars
-        const definition = args[0];
+        const definition = args.slice(0).join(' ');
         ud.term(definition, function(error, entries) {
             if(error) return message.channel.send('Something went wrong!');
             const embed = new discord.RichEmbed()

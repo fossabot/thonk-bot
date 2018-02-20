@@ -1,23 +1,18 @@
 module.exports = {
-    prefix: "PREFIX HERE",
-    ownerID: "YOUR DISCORD USER ID HERE",
-    tokens: {
-        bot: "BOT'S TOKEN HERE",
-        cleverbot_api: { //USE CLEVERBOT.IO TO GENERATE A USER AND KEY FOR YOUR BOT
-            user: "YOUR CLEVERBOT.IO USER HERE",
-            key: "YOUR CLEVERBOT.IO KEY HERE"
+        prefix: 'PREFIX',
+        ownerID: 'YOUR DISCORD ID',
+        tokens: {
+            bot: 'BOT TOKEN HERE',
+            cleverbot_api: {
+                user: 'insert key pls',
+                key: 'this too',
+            },
+            nasa: 'this three',
         },
-        nasa: "API.NASA.GOV API KEY HERE"
-    },
-    items: {
-        price: {
-            ITEM ID HERE: PRICE HERE,
-            ITEM ID HERE: PRICE HERE
+        items: {
+            price: {
+                1: number,
+                2: number,
+            },
         },
-        name: {
-            ITEM ID: "NAME HERE",
-            ITEM ID: "NAME HERE"
-        }
-    }
-    
-}
+};

@@ -1,7 +1,7 @@
 const db = require('quick.db');
 const config = require('../cfg/config.js');
 exports.run = (client, message, respondFile, talkedRecently) => {
-    db.fetchArray(`inventory_${message.author.id}`).then(invFetched => {
+    db.fetchArray(`inventory_${message.author.id}`).then(invFetched => { // Note that the reaction will only added when the user bought the items
       if(invFetched.includes('1') && message.content.endsWith(' /r')) message.react('357315026283134976');
       if (invFetched.includes('2') && message.content.endsWith(' /r')) message.react('377430402585067521');
     });
@@ -9,15 +9,15 @@ exports.run = (client, message, respondFile, talkedRecently) => {
     const commandName = args.shift().toLowerCase();
     if(respondFile[message.content]) {
       db.fetchObject(`response_${message.guild.id}`).then(i => {
-        if (i.text === 'FALSE' || !i.text) return; //since some guild dont want be annoyed k;lk
+        if (i.text === 'FALSE' || !i.text) return; 
           else {
-            message.channel.send(respondFile[message.content]); //and i make a glorious shit for your salty guild xdddddd
+            message.channel.send(respondFile[message.content]); 
             console.log(`${message.author.username} trigger the bot with response '${message.content}'`);
           }
       });
     }
     
-    if(message.author.bot || !message.content.startsWith(config.prefix)) return; //to prevent chaos and log spam happen
+    if(message.author.bot || !message.content.startsWith(config.prefix)) return; 
     if (talkedRecently.has(message.author.id)) return message.reply('u have to wait 3 seconds!!!111!');
     talkedRecently.add(message.author.id);
     setTimeout(() => {

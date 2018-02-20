@@ -4,10 +4,9 @@ module.exports = {
     info: 'HAHAHAHAH SO FUNNY HFAHFJFHH',
     async execute(message, args) { //eslint-disable-line no-unused-vars
         const { body } = await request
-        .get('https://icanhazdadjoke.com/')
-        .set('Accept`, `application/json');
+        .get('http://icanhazdadjoke.com/')
+        .set('Accept', 'application/json');
         
-        if (body.status === 200) message.channel.send(body.joke);
-            else message.channel.send('Something went wrong! :(');
+        message.channel.send(body.joke);
     },
 };

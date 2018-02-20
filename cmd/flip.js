@@ -15,7 +15,7 @@ module.exports = {
             if (toBet > i.value || i.value < toBet) return message.channel.send('You don\'t have enough money to bet!');
             if (tailsHeads != replies[result]) {
                 db.updateValue(`balance_${message.author.id}`, -toBet).then(o => {
-                message.channel.send(`You lose! \n**You was betting**: ${toBet} \nBut the result is ${replies[result]} \nYou now have: ${o.value}`);
+                message.channel.send(`You lose! \n**You was betting**: ${tailsHeads} \nBut the result is ${replies[result]} \nYou now have: ${o.value}`);
             });
             } else {
                 db.updateValue(`balance_${message.author.id}`, toBet).then(p => {

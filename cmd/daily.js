@@ -8,7 +8,7 @@ module.exports = {
        db.fetchObject(`lastDaily_${message.author.id}`).then(i => {
            const success = new discord.RichEmbed()
                 .setColor('GREEN')
-                .addField('**Daily reward claimed!**`, `You claimed your daily *$500*!')
+                .addField('**Daily reward claimed!**', 'You claimed your daily *$500*!')
                 .setFooter('thonking bot', 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png');
            const fail = new discord.RichEmbed()
             .setColor('RED')

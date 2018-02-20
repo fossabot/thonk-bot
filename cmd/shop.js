@@ -13,7 +13,7 @@ module.exports = {
                 .setFooter('Thonking bot', 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png')
                 .addField('Reactions: \:kissing: ', 'React with a emoji everytime you send a message! (Put "/r" end of your message to make the bot react)', false) //eslint-disable-line no-useless-escape
                 .addField(`Broken Thumb <:broken_thumb:357315026283134976>', '**ID: 1 Price: $${config.items.price[0]}**`, true)
-                .addField(`L I T Joy <:wow:377430402585067521>', '**ID: 2 Price: $${config.items.price[0]}**`, true);
+                .addField(`L I T Joy <:wow:377430402585067521>', '**ID: 2 Price: $${config.items.price[1]}**`, true);
             message.channel.send(shopList);
         } else {
             if(isNaN(itemID) || !config.items.price[itemID]) return message.channel.send('You entered an invalid item ID!');

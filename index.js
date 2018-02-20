@@ -1,4 +1,4 @@
-const discord = require('discord.js'); //add discord.js idk
+const discord = require('discord.js');
 const client = new discord.Client();
 const fs = require('fs');
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
@@ -21,4 +21,4 @@ fs.readdir('./events/', (err, files) => {
     client.on(eventName, (...args) => eventFunction.run(client, ...args, respondFile, talkedRecently, config));
   });
 });
-client.login(config.tokens.bot); // nigger don't fucking leak token again
+client.login(config.tokens.bot); 

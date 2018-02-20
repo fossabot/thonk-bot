@@ -1,6 +1,7 @@
 module.exports = {
         prefix: 'PREFIX',
         ownerID: 'YOUR DISCORD ID',
+        public: false,
         tokens: {
             bot: 'BOT TOKEN HERE',
             cleverbot_api: {
@@ -8,6 +9,7 @@ module.exports = {
                 key: 'this too',
             },
             nasa: 'this three',
+            dbl: 'discordbots.org api key (DONT INSERT UNLESS YOUR BOT IS HERE)',
         },
         items: {
             price: {

@@ -3,7 +3,6 @@
 bot that coded for bleach nation server, for memes.
 
 ## Requirements
-read package.json thanks
+node.js `8.9.4`
+npm
 
-## Bot setup
-Coming soon...

@@ -1,6 +1,6 @@
+const config = require('../cfg/config');
 const DBL = require('dblapi.js');
 const dbl = new DBL(config.tokens.dbl, client); //eslint-disable-line no-undef
-const config = require('../cfg/config');
 const db = require('quick.db');
 const moment = require('moment');
 const discord = require('discord.js');

@@ -3,6 +3,7 @@ module.exports = {
     name: 'whodidthis',
     info: 'WHO DID THIS LOLOLOLO',
     usage: '[mention or url]',
+    aliases: ['wdt'],
     async execute(message, args) { //eslint-disable-line no-unused-vars
         const src = await jeff.read('./assets/template/who-did-this.png');
         let toChange = message.author.displayAvatarURL;

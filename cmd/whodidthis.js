@@ -8,6 +8,7 @@ module.exports = {
         const src = await jeff.read('./assets/template/who-did-this.png');
         let toChange = message.author.displayAvatarURL;
         if (message.mentions.users.first()) toChange = message.mentions.users.first().displayAvatarURL;
+        if (args.slice(0).join(' ').startsWith('http')) toChange = args.slice(0).join(' ');
         const img = await jeff.read(toChange);
         img.resize(816, 667);
         message.channel.startTyping();

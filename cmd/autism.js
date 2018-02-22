@@ -5,6 +5,7 @@ module.exports = {
     async execute(message, args) { //eslint-disable-line no-unused-vars
         const src = await jeff.read('./assets/template/autism.png');
         let toChange = message.author.displayAvatarURL;
+        if (args.slice(0).join(' ').startsWith('http')) toChange = args.slice(0).join(' ');
         if (message.mentions.users.first()) toChange = message.mentions.users.first().displayAvatarURL;
         const img = await jeff.read(toChange);
         message.channel.startTyping();

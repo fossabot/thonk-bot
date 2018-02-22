@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const client = new discord.Client();
+const client = new discord.Client({ disableEveryone: true });
 const fs = require('fs');
 const respondFile = JSON.parse(fs.readFileSync('./cfg/responds.json', 'utf8'));
 const talkedRecently = new Set();

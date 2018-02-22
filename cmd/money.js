@@ -10,7 +10,7 @@ module.exports = {
         if (toCheck) {
             db.fetchObject(`balance_${toCheck.user.id}`).then(o => { //eslint-disable-line no-unused-vars
                 const what = new discord.RichEmbed()
-                .setDescription('\:moneybag: **${toCheck.user.username}\'s balance**: $${o.value}') //eslint-disable-line no-useless-escape
+                .setDescription(`\:moneybag: **${toCheck.user.username}\'s balance**: $${o.value}`) //eslint-disable-line no-useless-escape
                 .setColor('GREEN')
                 .setFooter('thonking bot', 'https://cdn.discordapp.com/avatars/412516192406732811/8519f2784c94a9664390a68ef1a4c3d7.png');
                 message.channel.send(what);

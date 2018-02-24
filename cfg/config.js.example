@@ -9,7 +9,6 @@ module.exports = {
                 key: 'this too',
             },
             nasa: 'this three',
-            dbl: 'discordbots.org api key (DONT INSERT UNLESS YOUR BOT IS HERE)',
         },
         items: {
             price: {

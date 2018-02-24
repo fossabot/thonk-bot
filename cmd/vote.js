@@ -9,6 +9,7 @@ module.exports = {
     info: 'support the bot by voting to get rewards!',
     execute(message, args) { //eslint-disable-line no-unused-vars
         message.channel.send('Sorry, but the vote command is broken atm. \nIssue: https://github.com/tsblock/thonk-bot/issues/5');
+        if(!config.public) return message.channel.send('This command is only for public bot!');
         // const notVoted = new discord.RichEmbed()
         //     .setColor('GREEN')
         //     .setDescription(`Hello! You can vote me on discordbots.org to support this project\nYou can get another *$500* after voting\nAfter you voted me, please type ${config.prefix}vote again to claim the reward\nLink: [Here!](https://discordbots.org/bot/412516192406732811/vote)`);

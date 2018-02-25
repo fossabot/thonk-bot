@@ -7,7 +7,7 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
     });
     let prefix;
     const prefixFetched = await db.fetchObject(`prefix_${message.guild.id}`);
-    if (prefixFetched) prefix = prefixFetched.text;
+    if (prefixFetched.text) prefix = prefixFetched.text;
       else prefix = config.prefix;
       const prefixMention = new RegExp(`^<@!?${client.user.id}>`);
       if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`Hello! My default prefix is \`${config.prefix}\`, the guild currently set my prefix to \`${prefixFetched.text}\` You can use \`${prefixFetched.text}help\` to get a list of my commands!`);

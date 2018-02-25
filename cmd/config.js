@@ -1,11 +1,11 @@
 const discord = require('discord.js');
 const db = require('quick.db');
 module.exports = {
-    name: 'cfg',
+    name: 'config',
     info: 'View the bot\'s config',
     guildOnly: true,
     usage: '<option to change> <value>',
-    aliases: ['cfg', 'config'],
+    aliases: ['cfg'],
     execute(message, args) { //eslint-disable-line no-unused-vars
         let channel;
         let dmText;
@@ -14,6 +14,7 @@ module.exports = {
         let autoRole;
         let modChannel;
         let responseToggle;
+        let prefix;
         //woah look at this mess
             db.fetchObject(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
                 if (!message.guild.channels.get(channelIDFetched.text)) channel = '*none*';
@@ -36,17 +37,22 @@ module.exports = {
                                         db.fetchObject(`response_${message.guild.id}`).then(responseToggleFetched => {
                                             if (!responseToggleFetched.text || responseToggleFetched.text === 'off' || responseToggleFetched.text === 'false') responseToggle = '*false*';
                                                 else responseToggle = responseToggleFetched.text;
-                                            let response = `**Member Logging Channel**\n > ${channel}\n\n` ;
-                                            response += `**Moderation Logging Channel**\n > ${modChannel}\n\n`;
-                                            response += `**Welcome DM Text**\n > ${dmText}\n\n` ;
-                                            response += `**Welcome Text**\n > ${joinText}\n\n` ;
-                                            response += `**Leave Channel Text**\n > ${leaveText}\n\n` ;
-                                            response += `**Auto role**\n > ${autoRole}\n\n`;
-                                            response += `**Dumb responses**\n > ${responseToggle}`;
-                                            const embed = new discord.RichEmbed()
-                                                .setDescription(response)
-                                                .setColor('RANDOM');
-                                            message.channel.send(embed);
+                                            db.fetchObject(`prefix_${message.guild.id}`).then(prefixFetched => {
+                                                if (!prefixFetched.text || prefixFetched.text === 't.') prefix = '*t.*';
+                                                else prefix = prefixFetched.text;
+                                                let response = `**Member Logging Channel**\n > ${channel}\n\n` ;
+                                                response += `**Moderation Logging Channel**\n > ${modChannel}\n\n`;
+                                                response += `**Welcome DM Text**\n > ${dmText}\n\n` ;
+                                                response += `**Welcome Text**\n > ${joinText}\n\n` ;
+                                                response += `**Leave Channel Text**\n > ${leaveText}\n\n` ;
+                                                response += `**Auto role**\n > ${autoRole}\n\n`;
+                                                response += `**Dumb responses**\n > ${responseToggle}\n\n`;
+                                                response += `**Prefix**\n > ${prefix}`;
+                                                const embed = new discord.RichEmbed()
+                                                    .setDescription(response)
+                                                    .setColor('RANDOM');
+                                                message.channel.send(embed);
+                                            });
                                         });
                                     });
 

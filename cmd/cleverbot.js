@@ -9,18 +9,17 @@ module.exports = {
     args: true,
     usage: '<message>',
     execute(message, args) {
-        message.channel.send('Sorry, but the cleverbot api seems down, we will disable this command until the owner of this api solved this problem.')
-        // const toAsk = args.slice(0).join(' ');
-        // cb.create(function(err, session) { //eslint-disable-line no-unused-vars
-        //         message.channel.startTyping();
-        //         try {
-        //             cb.ask(toAsk, function(err, response) {
-        //                 message.channel.send(response);
-        //                 message.channel.stopTyping();
-        //             });
-        //         } catch (err) {
-        //             message.channel.send('Something went wrong!');
-        //         }
-        //     });
+        const toAsk = args.slice(0).join(' ');
+        cb.create(function(err, session) { //eslint-disable-line no-unused-vars
+                message.channel.startTyping();
+                try {
+                    cb.ask(toAsk, function(err, response) {
+                        message.channel.send(response);
+                        message.channel.stopTyping();
+                    });
+                } catch (err) {
+                    message.channel.send('Something went wrong!');
+                }
+            });
     },
 };

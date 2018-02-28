@@ -18,7 +18,7 @@ module.exports = {
                         message.channel.stopTyping();
                     });
                 } catch (err) {
-                    message.channel.send('Something went wrong!');
+                    message.channel.send('Something went wrong! Maybe the API is down?');
                 }
             });
     },

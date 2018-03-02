@@ -5,7 +5,7 @@ module.exports = {
       const then = Date.now();
     message.channel.send('ping? \:thinking:').then(m => { //eslint-disable-line no-useless-escape
       const time = Date.now() - then;
-      m.edit(`:ping_pong: Pong! ${time}ms API Ping: ${client.ping}`); //eslint-disable-line no-undef
+      m.edit(`:ping_pong: Pong! ${time}ms API Ping: ${Math.round(client.ping)}`); //eslint-disable-line no-undef
     });
   },
 };

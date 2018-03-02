@@ -1209,9 +1209,9 @@ qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
-quick.db@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/quick.db/-/quick.db-3.0.3.tgz#eba312df6bcb92a33d6905613060e87ddf40396f"
+quick.db@4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/quick.db/-/quick.db-4.10.0.tgz#ff6ec625ec0c92433d1373ca1b0b534b4fc0ced4"
   dependencies:
     sqlite3 "^3.1.13"
 

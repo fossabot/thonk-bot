@@ -10,7 +10,7 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
     if (prefixFetched.text) prefix = prefixFetched.text;
       else prefix = config.prefix;
       const prefixMention = new RegExp(`^<@!?${client.user.id}>`);
-      if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`My prefix here is \`${prefixFetched.text}\``);
+      if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`**My prefix here is** \`${prefix}\` `);
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const commandName = args.shift().toLowerCase();
       if(respondFile[message.content]) {

@@ -8,6 +8,7 @@ module.exports = {
     guildOnly: false,
     execute (message, args) {
         weather.find({ search: args.join(' '), degreeType: 'C' }, function(err, result) {
+            if (!result[0]) return message.channel.send('Can\'t find a city with this name!');
             if (err) console.log(err);
             const current = result[0].current;
             const location = result[0].location;

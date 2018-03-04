@@ -41,13 +41,13 @@ module.exports = {
             weight: 10,
         });
 
-        db.fetchObject(`balance_${message.author.id}`).then(h => {
+        db.fetch(`balance_${message.author.id}`).then(h => {
             if (toBet > h.value) return message.channel.send('You don\'t have enough money!');
             const machine = new SlotMachine(3, [moneybag, wild, onehundred, thonk, thenk]);
             const r = machine.play();
-            db.updateValue(`balance_${message.author.id}`, r.winCount * toBet).then(i => {
+            db.add(`balance_${message.author.id}`, r.winCount * toBet).then(i => {
                 if (!r.winCount) {
-                    db.updateValue(`balance_${message.author.id}`, -toBet);
+                    db.subtract(`balance_${message.author.id}`, toBet);
                     message.channel.send(`${r.visualize()} \n**You lost** $*${toBet}* dollars, Better luck next time!`);
                 } else message.channel.send(`${r.visualize()} \n**You won**: $*${r.winCount * toBet}* \n\n**You now have**: $${i.value}`); //eslint-disable-line curly
             });

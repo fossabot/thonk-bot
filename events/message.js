@@ -1,28 +1,20 @@
 const db = require('quick.db');
 const config = require('../cfg/config.js');
 exports.run = async (client, message, respondFile, talkedRecently) => {
-    db.fetchArray(`inventory_${message.author.id}`).then(invFetched => { // Note that the reaction will only added when the user bought the items
-      if(invFetched.includes('1') && message.content.endsWith(' /r')) message.react('357315026283134976');
-      if (invFetched.includes('2') && message.content.endsWith(' /r')) message.react('377430402585067521');
+    db.fetch(`inventory_${message.author.id}`).then(invFetched => { // Note that the reaction will only added when the user bought the items
+      if (typeof invFetched == Array) {
+        if (invFetched.includes('2') && message.content.endsWith(' /r')) message.react('377430402585067521');
+        if(invFetched.includes('1') && message.content.endsWith(' /r')) message.react('357315026283134976');
+      }
     });
     let prefix;
-    const prefixFetched = await db.fetchObject(`prefix_${message.guild.id}`);
-    if (prefixFetched.text) prefix = prefixFetched.text;
+    const prefixFetched = await db.fetch(`prefix_${message.guild.id}`);
+    if (prefixFetched) prefix = prefixFetched;
       else prefix = config.prefix;
       const prefixMention = new RegExp(`^<@!?${client.user.id}>`);
-      if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`Hello! My default prefix is \`${config.prefix}\`, the guild currently set my prefix to \`${prefixFetched.text}\` You can use \`${prefixFetched.text}help\` to get a list of my commands!`);
+      if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`**My prefix here is** \`${prefix}\` `);
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const commandName = args.shift().toLowerCase();
-      if(respondFile[message.content]) {
-        db.fetchObject(`response_${message.guild.id}`).then(i => {
-        if (i.text === 'FALSE' || !i.text) return; 
-        else {
-          message.channel.send(respondFile[message.content]); 
-          console.log(`${message.author.username} trigger the bot with response '${message.content}'`);
-        }
-      });
-    }
-    
     if(message.author.bot || !message.content.startsWith(prefix)) return; 
     if (talkedRecently.has(message.author.id)) return message.reply('u have to wait 3 seconds!!!111!');
     talkedRecently.add(message.author.id);
@@ -46,4 +38,4 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
     } catch (err) {
       console.log(err);
     }
-};
+}

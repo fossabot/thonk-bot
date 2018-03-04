@@ -1,21 +1,21 @@
-const ud = require('urban-dictionary');
+const request = require('superagent');
 const discord = require('discord.js');
 module.exports = {
     name: 'urban',
-    info: 'get definition of a word from urban dictionary. Note that it\'s only show the first entry',
+    info: 'get definition of a word from urban dictionary. Note that it only shows the first entry',
     args: true,
     usage: '<word>',
-    execute(message, args) { //eslint-disable-line no-unused-vars
-        const definition = args.slice(0).join(' ');
-        ud.term(definition, function(error, entries) {
-            if(error) return message.channel.send('Something went wrong!');
-            const embed = new discord.RichEmbed()
-                .setAuthor(`Urban dictionary: ${definition}`, 'http://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files/florianurban/icon/icon.png', 'https://www.urbandictionary.com')
-                .addField('Definition', entries[0].definition)
-                .addField('Example', entries[0].example)
-                .setColor('RANDOM')
-                .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL);
-            message.channel.send(embed);
-        });
+    async execute(message, args) { //eslint-disable-line no-unused-vars
+        const { body } = await request
+        .get(`http://api.urbandictionary.com/v0/define?term=${encodeURIComponent(args.join(' '))}`);
+
+        if (body.result_type === "no_results") return message.channel.send(`Can\'t find definition about \`${args.join(' ')}\`!`);
+        const yey = new discord.RichEmbed()
+            .setAuthor('Urban Dictionary', 'https://i.imgur.com/3Z6q4LK.png', 'https://www.urbandictionary.com/')
+            .setFooter(client.user.username, client.user.displayAvatarURL)
+            .setColor('ORANGE')
+            .addField('Definition', body.list[0].definition)
+            .addField('Example', body.list[0].example);
+        message.channel.send(yey);
     },
 };

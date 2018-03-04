@@ -13,47 +13,42 @@ module.exports = {
         let leaveText;
         let autoRole;
         let modChannel;
-        let responseToggle;
         let prefix;
         //woah look at this mess
-            db.fetchObject(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
-                if (!message.guild.channels.get(channelIDFetched.text)) channel = '*none*';
-                else channel = message.guild.channels.get(channelIDFetched.text);
-                db.fetchObject(`joinMessageDM_${message.guild.id}`).then(joinDMFetched => {
-                    if (!joinDMFetched.text) dmText = '*none*';
-                    else dmText = joinDMFetched.text;
-                    db.fetchObject(`joinMessage_${message.guild.id}`).then(joinTextFetched => {
-                        if (!joinTextFetched.text) joinText = '*none*';
-                        else joinText = joinTextFetched.text;
-                        db.fetchObject(`leaveMessage_${message.guild.id}`).then(leaveTextFetched => {
-                            if (!leaveTextFetched.text) leaveText = '*none*';
-                            else leaveText = leaveTextFetched.text;
-                                db.fetchObject(`autoRole_${message.guild.id}`).then(autoRoleFetched => {
-                                    if(!autoRoleFetched.text) autoRole = '*none*';
-                                    else autoRole = autoRoleFetched.text;
-                                    db.fetchObject(`modChannel_${message.guild.id}`).then(modChannIDFetched => {
-                                        if(!modChannIDFetched.text) modChannel = '*none*';
-                                        else modChannel = message.guild.channels.get(modChannIDFetched.text);
-                                        db.fetchObject(`response_${message.guild.id}`).then(responseToggleFetched => {
-                                            if (!responseToggleFetched.text || responseToggleFetched.text === 'off' || responseToggleFetched.text === 'false') responseToggle = '*false*';
-                                                else responseToggle = responseToggleFetched.text;
-                                            db.fetchObject(`prefix_${message.guild.id}`).then(prefixFetched => {
-                                                if (!prefixFetched.text || prefixFetched.text === 't.') prefix = '*t.*';
-                                                else prefix = prefixFetched.text;
-                                                let response = `**Member Logging Channel**\n > ${channel}\n\n` ;
-                                                response += `**Moderation Logging Channel**\n > ${modChannel}\n\n`;
-                                                response += `**Welcome DM Text**\n > ${dmText}\n\n` ;
-                                                response += `**Welcome Text**\n > ${joinText}\n\n` ;
-                                                response += `**Leave Channel Text**\n > ${leaveText}\n\n` ;
-                                                response += `**Auto role**\n > ${autoRole}\n\n`;
-                                                response += `**Dumb responses**\n > ${responseToggle}\n\n`;
-                                                response += `**Prefix**\n > ${prefix}`;
+            db.fetch(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
+                if (!message.guild.channels.get(channelIDFetched)) channel = '*none*';
+                else channel = message.guild.channels.get(channelIDFetched);
+                db.fetch(`joinMessageDM_${message.guild.id}`).then(joinDMFetched => {
+                    if (!joinDMFetched) dmText = '*none*';
+                    else dmText = joinDMFetched;
+                    db.fetch(`joinMessage_${message.guild.id}`).then(joinTextFetched => {
+                        if (!joinTextFetched) joinText = '*none*';
+                        else joinText = joinTextFetched;
+                        db.fetch(`leaveMessage_${message.guild.id}`).then(leaveTextFetched => {
+                            if (!leaveTextFetched) leaveText = '*none*';
+                            else leaveText = leaveTextFetched;
+                                db.fetch(`autoRole_${message.guild.id}`).then(autoRoleFetched => {
+                                    if(!autoRoleFetched) autoRole = '*none*';
+                                    else autoRole = autoRoleFetched;
+                                    db.fetch(`modChannel_${message.guild.id}`).then(modChannIDFetched => {
+                                        if(!modChannIDFetched) modChannel = '*none*';
+                                        else modChannel = message.guild.channels.get(modChannIDFetched);
+                                            db.fetch(`prefix_${message.guild.id}`).then(prefixFetched => {
+                                                if (!prefixFetched || prefixFetched === 't.') prefix = '*t.*';
+                                                else prefix = prefixFetched;
                                                 const embed = new discord.RichEmbed()
-                                                    .setDescription(response)
-                                                    .setColor('RANDOM');
+                                                    .addField('Prefix', prefix, true)
+                                                    .addField('Member Logging Channel', channel, true)
+                                                    .addField('Join DM Message', dmText, true)
+                                                    .addField('Join Message', joinText, true)
+                                                    .addField('Leave Message', leaveText, true)
+                                                    .addField('Auto Role', autoRole, true)
+                                                    .addField('Moderation Logging Channel', modChannel, true)
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Config')
+                                                    .setFooter(client.user.username, client.user.displayAvatarURL); //eslint-disable-line no-undef
                                                 message.channel.send(embed);
                                             });
-                                        });
                                     });
 
                                 });

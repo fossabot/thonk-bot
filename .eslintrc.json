@@ -35,5 +35,9 @@
         "space-infix-ops": "error",
         "space-unary-ops": "error",
         "yoda": "error"
+    },
+    "globals": {
+        "discord": true,
+        "client": true
     }
 }

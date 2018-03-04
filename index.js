@@ -13,6 +13,7 @@ for (const file of cmdFiles) {
   const cmd = require(`./cmd/${file}`);
   client.commands.set(cmd.name, cmd);
 }
+process.on('unhandledRejection', error => console.error(`Uncaught Promise Rejection:\n${error}`));
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {

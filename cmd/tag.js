@@ -6,10 +6,10 @@ module.exports = {
     usage: '<tag name>',
     execute(message, args) {
         const name = args[0];
-        db.fetchObject(`tag_${name}`).then(i => {
-            if (!i.text) { return message.channel.send('The tag does not exist!'); }
+        db.fetch(`tag_${name}`).then(i => {
+            if (typeof i == Object && !i) { return message.channel.send('The tag does not exist!'); }
                 else {
-                    message.channel.send(`**Tag name**: ${name}\n\n**Content**: ${i.text}`);
+                    message.channel.send(`**Tag name**: ${name}\n\n**Content**: ${i}`);
                 }
         });
     },

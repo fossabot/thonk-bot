@@ -6,7 +6,6 @@ module.exports = {
     name: 'apod',
     info: 'Get the Astronomy Picture of the Day from NASA',
     async execute(message, args) { //eslint-disable-line no-unused-vars
-        if(!config.tokens.nasa) return message.channel.send('You haven\'t set the NASA API key!');
         const { body } = await request
         .get(`https://api.nasa.gov/planetary/apod?api_key=${config.tokens.nasa}`);
 

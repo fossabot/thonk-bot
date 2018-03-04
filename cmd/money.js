@@ -10,9 +10,9 @@ module.exports = {
         if (toCheck) {
             db.fetch(`balance_${toCheck.user.id}`).then(o => { //eslint-disable-line no-unused-vars
                 let bal = o; //eslint-disable-line no-unused-vars
-                if (o === null) bal = 0;
+                if (bal == null) bal = '0';
                 const what = new discord.RichEmbed()
-                .setDescription(`\:moneybag: **${toCheck.user.username}\'s balance**: $${o}`) //eslint-disable-line no-useless-escape
+                .setDescription(`\:moneybag: **${toCheck.user.username}\'s balance**: $${bal}`) //eslint-disable-line no-useless-escape
                 .setColor('GREEN')
                 .setFooter(client.user.username, client.user.displayAvatarURL); //eslint-disable-line no-undef
                 message.channel.send(what);

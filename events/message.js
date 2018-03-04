@@ -1,12 +1,6 @@
 const db = require('quick.db');
 const config = require('../cfg/config.js');
 exports.run = async (client, message, respondFile, talkedRecently) => {
-    db.fetch(`inventory_${message.author.id}`).then(invFetched => { // Note that the reaction will only added when the user bought the items
-      if (typeof invFetched == Array) {
-        if (invFetched.includes('2') && message.content.endsWith(' /r')) message.react('377430402585067521');
-        if(invFetched.includes('1') && message.content.endsWith(' /r')) message.react('357315026283134976');
-      }
-    });
     let prefix;
     const prefixFetched = await db.fetch(`prefix_${message.guild.id}`);
     if (prefixFetched) prefix = prefixFetched;
@@ -38,4 +32,4 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
     } catch (err) {
       console.log(err);
     }
-}
+};

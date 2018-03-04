@@ -8,27 +8,30 @@ module.exports = {
     name: 'vote',
     info: 'support the bot by voting to get rewards!',
     execute(message, args) { //eslint-disable-line no-unused-vars
-        message.channel.send('Sorry, but the vote command is broken atm. \nIssue: https://github.com/tsblock/thonk-bot/issues/5');
         if(!config.public) return message.channel.send('This command is only for public bot!');
-        // const notVoted = new discord.RichEmbed()
-        //     .setColor('GREEN')
-        //     .setDescription(`Hello! You can vote me on discordbots.org to support this project\nYou can get another *$500* after voting\nAfter you voted me, please type ${config.prefix}vote again to claim the reward\nLink: [Here!](https://discordbots.org/bot/412516192406732811/vote)`);
-        // const alreadyVoted = new discord.RichEmbed()
-        //     .setColor('RED')
-        //     .setDescription('You already voted today! Please vote again tomorrow.');
-        // dbl.hasVoted(message.author.id).then(i => {
-        //     if (!i) return message.channel.send(notVoted);
-        //     db.fetchObject(`hasVoted_${message.author.id}`).then(o => {
-        //         if(i && o.text === moment().format('L')) return message.channel.send(alreadyVoted);
-        //         db.updateText(`hasVoted_${message.author.id}`, moment().format('L')).then(() => {
-        //             db.updateValue(`balance_${message.author.id}`, 500).then(p => {
-        //                 const voted = new discord.RichEmbed()
-        //                 .setTitle('Vote registered!')
-        //                 .setDescription(`Thanks for voting! *$500* has been added to your wallet! \nYou now have: *$${p.value}*`);
-        //                 message.channel.send(voted);
-        //             });
-        //         });
-        //     });
-        // });
+        dbl.hasVoted(message.author.id).then(voted => {
+            if (voted) {
+                db.fetch(`lastVote_${message.author.id}`).then(wat => {
+                    if (wat !== moment().format('YYYY MM')) {
+                        db.set(`lastVote_${message.author.id}`, moment().format('YYYY MM')).then(yey => {
+                            db.fetch(`dailyAmount_${message.author.id}`).then(n => {
+                                if (!n) db.add(`dailyAmount_${message.author.id}`, 500 + 250).then(m => {
+                                    message.channel.send(`Successfully added daily reward to ${m}`);
+                                });
+                            });
+                        });
+                    } else {
+                        message.channel.send('You already upvoted this month!');  
+                    }
+                });
+            } else {
+                message.channel.send({
+                    embed: {
+                        color: 'RED',
+                        description: 'You can upvote this bot here [here.](https://discordbots.org/bot/412516192406732811/vote)',
+                    },
+                });
+            }
+        });
     },
 };

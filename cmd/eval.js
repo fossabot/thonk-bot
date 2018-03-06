@@ -28,7 +28,7 @@ module.exports = {
       }
       message.channel.send(clean(evaled), { code:'xl' });
     } catch (err) {
-      message.channel.send(`\<:redtick:412529964945113100> **Error!** \`\`\`xl\n${clean(err.stack)}\n\`\`\``);
+      message.channel.send(`\<:redtick:412529964945113100> **Error!** \`\`\`xl\n${clean(err)}\n\`\`\``);
     }
   },
 };

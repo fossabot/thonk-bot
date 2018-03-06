@@ -3,7 +3,7 @@ const config = require('../cfg/config.js');
 exports.run = async (client, message, respondFile, talkedRecently) => {
     let prefix;
     const prefixFetched = await db.fetch(`prefix_${message.guild.id}`);
-    if (prefixFetched) prefix = prefixFetched;
+    if (prefixFetched && message.channel.type !== 'text') prefix = prefixFetched;
       else prefix = config.prefix;
       const prefixMention = new RegExp(`^<@!?${client.user.id}>`);
       if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`**My prefix here is** \`${prefix}\` `);

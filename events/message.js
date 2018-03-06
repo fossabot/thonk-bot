@@ -2,11 +2,12 @@ const db = require('quick.db');
 const config = require('../cfg/config.js');
 exports.run = async (client, message, respondFile, talkedRecently) => {
     let prefix;
-    const prefixFetched = await db.fetch(`prefix_${message.guild.id}`);
-    if (prefixFetched && message.channel.type === 'text') prefix = prefixFetched;
-      else prefix = config.prefix;
+    if (message.channel.type === 'text') {
+      const prefixFetched = await db.fetch(`prefix_${message.guild.id}`);
+      prefix = prefixFetched;
+    } else prefix = config.prefix;
       const prefixMention = new RegExp(`^<@!?${client.user.id}>`);
-      if (message.content.match(prefixMention) || message.channel.type !== 'text') message.channel.send(`**My prefix here is** \`${prefix}\` `);
+      if (message.content.match(prefixMention) && message.channel.type === 'text') message.channel.send(`**My prefix here is** \`${prefix}\` `);
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const commandName = args.shift().toLowerCase();
     if(message.author.bot || !message.content.startsWith(prefix)) return; 

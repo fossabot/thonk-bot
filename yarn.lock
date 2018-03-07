@@ -585,6 +585,10 @@ formidable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.1.1.tgz#96b8886f7c3c3508b932d6bd70c4d3a88f35f1a9"
 
+free-google-image-search@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/free-google-image-search/-/free-google-image-search-1.0.0.tgz#7a6278be8edc646ed96a712251db32671724c815"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"

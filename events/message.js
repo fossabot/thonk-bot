@@ -4,7 +4,7 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
     let prefix;
     if (message.channel.type === 'text') {
       const prefixFetched = await db.fetch(`prefix_${message.guild.id}`);
-      prefix = prefixFetched;
+      prefixFetched ? prefix = prefixFetched : prefix = config.prefix;
     } else prefix = config.prefix;
       const prefixMention = new RegExp(`^<@!?${client.user.id}>`);
       if (message.content.match(prefixMention) && message.channel.type === 'text') message.channel.send(`**My prefix here is** \`${prefix}\` `);

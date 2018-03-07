@@ -5,7 +5,7 @@ require('moment-duration-format');
 module.exports = {
     name: 'info',
     info: 'shows the information about the bot',
-    execute (message, args) {
+    execute (message, args) { //eslint-disable-line
         const toSend = new discord.RichEmbed()
             .setAuthor(`${client.user.username}\'s stats`, client.user.displayAvatarURL)
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL)

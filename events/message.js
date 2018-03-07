@@ -26,7 +26,7 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
       if (command.usage) reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
       return message.channel.send(reply);
     }
-    if (command.ownerOnly && message.author.id !== config.ownerID) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`);
+    if (command.ownerOnly && !config.ownerID.includes(message.author.id)) return message.channel.send(`${message.author}, you don\'t have permission to use this command!`);
     try {
       command.execute(message, args);
       console.log(`${message.author.username} used the command '${command.name}' `);

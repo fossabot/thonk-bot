@@ -6,6 +6,10 @@ module.exports = {
     name: 'info',
     info: 'shows the information about the bot',
     execute (message, args) { //eslint-disable-line
+        const owners = [];
+        config.ownerID.forEach(i => {
+            owners.push(client.users.find('id', i).tag);
+        });
         const toSend = new discord.RichEmbed()
             .setAuthor(`${client.user.username}\'s stats`, client.user.displayAvatarURL)
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL)
@@ -16,7 +20,7 @@ module.exports = {
             .addField('👤 Users', client.users.size, true)
             .addField('<:djs:420908530837618698> Discord.js version', `v${discord.version}`, true)
             .addField('<:node:420908711146684436> Node.js version', process.version, true)
-            .addField('👑 Bot owner', client.users.find('id', config.ownerID).tag, true);
+            .addField('👑 Bot owners', owners.join(', '), true);
         message.channel.send(toSend);
     },
 };

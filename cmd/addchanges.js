@@ -9,7 +9,7 @@ module.exports = {
         if (args[0] != '{clean}') db.push('changelogs', args.join(' ')).then(() => {
             message.channel.send('**Successfully updated changelog**');
         });
-        else db.set(`changelogs`, []).then(() => {
+        else db.set('changelogs', []).then(() => {
             message.channel.send('**Successfully cleaned changelog**');
         });
     },

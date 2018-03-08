@@ -20,13 +20,13 @@ module.exports = {
             return;
         } else {
         db.fetch(`balance_${message.author.id}`).then(i => {
-            let bal = i;
-            if (bal == null) bal = '0';
+            const bal = i;
+            if (bal == null) return db.add(`balance_${message.author.id}`, 1000).then(() => {message.channel.send('Successfully created wallet for you!').then(msg => msg.delete(5000));});
                     const embed = new discord.RichEmbed()
                     .setDescription(`\:moneybag: **Balance**: $${bal}`) //eslint-disable-line no-useless-escape
                     .setColor('GREEN')
                     .setFooter(client.user.username, client.user.displayAvatarURL); //eslint-disable-line no-undef
-                    message.channel.send(embed);
+                    message.channel.send(embed).then(msg => msg.delete(15000));
         });
     }
     },

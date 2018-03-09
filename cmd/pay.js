@@ -13,7 +13,7 @@ module.exports = {
         if (toPayAmount < 0) return message.channel.send('You can\'t pay negative amount to a user!');
         db.fetch(`balance_${message.author.id}`).then(i => {
             if (toPayAmount > i) return message.channel.send('You don\'t have enough money to pay!');
-            db.subtract(`balance_${message.author.id}`, parseInt(toPayAmount)).then(o => {
+            db.add(`balance_${message.author.id}`, parseInt(-toPayAmount)).then(o => {
                 db.add(`balance_${toUser.id}`, parseInt(toPayAmount)).then(() => {
                     message.channel.send(`Successfully paid **$${toPayAmount}** to **${toUser.user.username}**! \nYou now have: $${o}`);
                 });

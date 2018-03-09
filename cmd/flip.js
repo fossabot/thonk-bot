@@ -14,8 +14,8 @@ module.exports = {
         db.fetch(`balance_${message.author.id}`).then(i => {
             if (toBet > i || i < toBet) return message.channel.send('You don\'t have enough money to bet!');
             if (tailsHeads != replies[result]) {
-                db.subtract(`balance_${message.author.id}`, parseInt(toBet)).then(o => {
-                message.channel.send(`You lose! \n**You was betting**: ${tailsHeads} \nBut the result is ${replies[result]} \nYou now have: ${o}`);
+                db.add(`balance_${message.author.id}`, parseInt(-toBet)).then(o => {
+                message.channel.send(`You lose! \n**You was betting**: ${tailsHeads} \nBut the result is ${replies[result]} \nYou now have: $${o}`);
             });
             } else {
                 db.add(`balance_${message.author.id}`, parseInt(toBet)).then(p => {

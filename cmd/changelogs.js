@@ -6,7 +6,7 @@ module.exports = {
     execute(message) {
         db.fetch('changelogs').then(logs => {
             let response;
-            if (!logs.length) response = '**No changes for now!**';
+            if (!logs.length || !logs) response = '**No changes for now!**';
             else if (logs.length > 5) {
                 const editedlogs = logs.slice(1).slice(-5);
                 for (let i = 0; i < editedlogs.length; i++) {

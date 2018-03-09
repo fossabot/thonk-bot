@@ -11,7 +11,7 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const commandName = args.shift().toLowerCase();
     if(message.author.bot || !message.content.startsWith(prefix)) return; 
-    if (talkedRecently.has(message.author.id)) return message.reply('u have to wait 3 seconds!!!111!');
+    if (talkedRecently.has(message.author.id)) return message.reply('please wait 3 seconds').then(m => m.delete(3000));
     talkedRecently.add(message.author.id);
     setTimeout(() => {
       talkedRecently.delete(message.author.id);

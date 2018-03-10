@@ -9,5 +9,6 @@ module.exports = {
                 key: 'this too',
             },
             nasa: 'this three',
+            pasteee: 'this four',
         },
 };

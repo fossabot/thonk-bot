@@ -1,4 +1,5 @@
 const request = require('superagent');
+const config = require('../cfg/config');
 module.exports = {
   name: 'eval',
   info: `executes javascript code \nWell, why you\'re here? You can\'t use this command anyway, get rekt ayy lmao. \nThere\'s no matter how long the description of a command is, so let\'s insert a random paragraph, shall we? \n 段落簡稱段，是文章中最基本的單位。從內容上說，它具有一個相對完整的意思；在文章中，段具有換行的標。段是由句子或句群組成的，在文章中用於體現作者的思路發展或全篇文章的層次。有的段落只有一個句子，稱為獨句段，獨句段一般是文章的開頭段、結尾段、過渡段強調段等特殊的段落。多數段落包括不止一個句子或句群，叫多句段。
@@ -30,15 +31,17 @@ module.exports = {
         evaled = require('util').inspect(evaled);
       if (clean(evaled).length > 2000) {
         const { body } = await request
-        .post('https://hastebin.com/documents')
-        .send(clean(evaled));
+          .post('https://api.paste.ee/v1/pastes')
+          .set('X-Auth-Token', config.tokens.pasteee)
+          .set('Content-Type', 'application/json')
+          .send({ 'sections':[{ 'contents': clean(evaled) }] });
 
-        message.channel.send(`Since the result is over 2000 letters long, I have posted the result to hastebin! https://hastebin.com/${body.key}.js`);
+        message.channel.send(`${body.link}`);
         return;
       }
       message.channel.send(clean(evaled), { code:'xl' });
     } catch (err) {
-      message.channel.send(`\<:redtick:412529964945113100> **Error!** \`\`\`xl\n${clean(err)}\n\`\`\``);
+      message.channel.send(`\<:redtick:412529964945113100> **lmao ur code sucks** \`\`\`xl\n${clean(err)}\n\`\`\``);
     }
   },
 };

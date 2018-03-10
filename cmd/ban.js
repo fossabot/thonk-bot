@@ -20,9 +20,9 @@ module.exports = {
             .setAuthor(message.author.username, message.author.displayAvatarURL)
             .setTitle('A member is banned!')
             .setDescription(`**Username :** ${toBan}\n**Reason :${reason}**`);
-            db.fetchObject(`modChannel_${message.guild.id}`).then(i => {
+            db.fetch(`modChannel_${message.guild.id}`).then(i => {
                 if (!i || i === 'none') return console.log('a guild didn\'t set a moderation chaheane');
-            message.guild.channels.get(i.text).send(embed);
+            message.guild.channels.get(i).send(embed);
             });
             return;
         } else if (!reason) {
@@ -33,9 +33,9 @@ module.exports = {
             .setAuthor(message.author.username, message.author.displayAvatarURL)
             .setTitle('A member is banned!')
             .setDescription(`**Username :** ${toBan}\n**Reason :${reason}**`);
-            db.fetchObject(`modChannel_${message.guild.id}`).then(i => {
+            db.fetch(`modChannel_${message.guild.id}`).then(i => {
                 if (!i || i === 'none') return console.log('a guild didn\'t set a moderation chaheane');
-            message.guild.channels.get(i.text).send(embed);
+            message.guild.channels.get(i).send(embed);
             return;
         });
     }

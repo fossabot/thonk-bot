@@ -21,7 +21,7 @@ module.exports = {
         } else {
         db.fetch(`balance_${message.author.id}`).then(i => {
             const bal = i;
-            if (bal == null) return db.add(`balance_${message.author.id}`, 1000).then(() => {message.channel.send('Successfully created wallet for you!').then(msg => msg.delete(5000));});
+            if (bal == null) return db.set(`balance_${message.author.id}`, 0).then(() => {message.channel.send('Successfully created wallet for you!').then(msg => msg.delete(5000));});
                     const embed = new discord.RichEmbed()
                     .setDescription(`\:moneybag: **Balance**: $${bal}`) //eslint-disable-line no-useless-escape
                     .setColor('GREEN')

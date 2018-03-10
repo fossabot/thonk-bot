@@ -4,7 +4,7 @@ module.exports = {
     info: 'kick a member',
     guildOnly: true,
     args: true,
-    usage: '<mention or username>',
+    usage: '<mention or username> [reason]',
     async execute (message, args) {
         const toKick = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         let reason = args.slice(1).join(' ');

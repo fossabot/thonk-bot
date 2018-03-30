@@ -7,7 +7,7 @@ module.exports = {
     execute(message, args) {
         const name = args[0];
         db.fetch(`tag_${name}`).then(i => {
-            if (typeof i == Object && !i) { return message.channel.send('The tag does not exist!'); }
+            if (!i) { return message.channel.send('The tag does not exist!'); }
                 else {
                     message.channel.send(`**Tag name**: ${name}\n\n**Content**: ${i}`);
                 }

@@ -1,6 +1,6 @@
 module.exports = {
         prefix: 'PREFIX',
-        ownerID: 'YOUR DISCORD ID',
+        ownerID: ['YOUR DISCORD ID', 'SECOND OWNER ID'],
         public: false,
         tokens: {
             bot: 'BOT TOKEN HERE',

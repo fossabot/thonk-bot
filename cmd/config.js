@@ -14,6 +14,7 @@ module.exports = {
         let autoRole;
         let modChannel;
         let prefix;
+        let sbchannel;
         //woah look at this mess
             db.fetch(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
                 if (!message.guild.channels.get(channelIDFetched)) channel = '*none*';
@@ -36,18 +37,23 @@ module.exports = {
                                             db.fetch(`prefix_${message.guild.id}`).then(prefixFetched => {
                                                 if (!prefixFetched || prefixFetched === 't.') prefix = '*t.*';
                                                 else prefix = prefixFetched;
-                                                const embed = new discord.RichEmbed()
-                                                    .addField('Prefix', prefix, true)
-                                                    .addField('Member Logging Channel', channel, true)
-                                                    .addField('Join DM Message', dmText, true)
-                                                    .addField('Join Message', joinText, true)
-                                                    .addField('Leave Message', leaveText, true)
-                                                    .addField('Auto Role', autoRole, true)
-                                                    .addField('Moderation Logging Channel', modChannel, true)
-                                                    .setColor('RANDOM')
-                                                    .setTitle('Config')
-                                                    .setFooter(client.user.username, client.user.displayAvatarURL); //eslint-disable-line no-undef
-                                                message.channel.send(embed);
+                                                    db.fetch(`starboard_${message.guild.id}`).then(sbchannelfetched => {
+                                                        if (!message.guild.channels.get(sbchannelfetched)) sbchannel = '*none*';
+                                                        else sbchannel = message.guild.channels.get(sbchannelfetched);
+                                                        const embed = new discord.RichEmbed()
+                                                        .addField('Prefix', `> ${prefix}`, true)
+                                                        .addField('Member Logging Channel', `> ${channel}`)
+                                                        .addField('Join DM Message', `> ${dmText}`)
+                                                        .addField('Join Message', `> ${joinText}`)
+                                                        .addField('Leave Message', `> ${leaveText}`)
+                                                        .addField('Auto Role', `> ${autoRole}`)
+                                                        .addField('Moderation Logging Channel', `> ${modChannel}`)
+                                                        .addField('Starboard Channel', `> ${sbchannel}`)
+                                                        .setColor('RANDOM')
+                                                        .setTitle('Config')
+                                                        .setFooter(client.user.username, client.user.displayAvatarURL); //eslint-disable-line no-undef
+                                                        message.channel.send(embed);
+                                                    });
                                             });
                                     });
 

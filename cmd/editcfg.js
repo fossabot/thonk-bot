@@ -1,7 +1,7 @@
 const db = require('quick.db');
 module.exports = {
     name: 'editcfg',
-    info: 'Edit the bot\'s config, set the option as \'none\' to set the option as empty \nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nprefix: Change the prefix of the bot',
+    info: 'Edit the bot\'s config, set the option as \'none\' to set the option as empty \nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nprefix: Change the prefix of the bot \nstarboard: Set a channel for logging starboard',
     usage: '<option> <value>',
     guildOnly: true,
     args: true,
@@ -66,8 +66,17 @@ module.exports = {
                     message.channel.send(`Successfully updated bot\'s prefix to ${newPrefix}`);
                 });
                 break;
+            case 'starboard':
+                let newsb = args.slice(1).join(' ');
+                if(!message.mentions.channels.first()) return message.channel.send('Please mention a channel!');
+                if(newsb === 'none') newsb = '';
+                    else newsb = message.mentions.channels.first().id;
+                db.set(`starboard_${message.guild.id}`, newsb).then(i => { //eslint-disable-line no-unused-vars
+                    message.channel.send(`**Successfully updated starboard channel to ${message.mentions.channels.first()}**`);
+                 });
+                break;
             default:
-                message.channel.send('Please provide a option!\n**-----**\nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nprefix: Change the prefix of the bot');
+                message.channel.send('Please provide a option!\n**-----**\nList of option available: \nlogChannel: Set the member log channel of the guild \nautoRole: Set the role that new member will be able to assign \nwelcomeText: Set the welcome message will be sent to the log channel of this guild \ndmText: Set the direct messages that will be sent to a new member of the guild\nleaveText: Set the leave message that will sent to the log channel of the guild\nmodChannel: Set a channel for display moderation log of the guild\nprefix: Change the prefix of the bot \nstarboard: Set a channel for logging starboard');
                 break;
         }
     },

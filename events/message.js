@@ -20,6 +20,7 @@ exports.run = async (client, message, respondFile, talkedRecently) => {
     const command = client.commands.get(commandName) 
     || client.commands.find(command => command.aliases && command.aliases.includes(commandName)); //eslint-disable-line no-shadow
     if (!command) return;
+    if (command.hidden && config.ownerID.includes(message.author.id)) return;
     if (command.guildOnly && message.channel.type !== 'text') return message.reply(`${message.author}, I can\'t execute that command inside DMs!`);
     if (command.args && !args.length) {
       let reply = `\<:redtick:412529964945113100> You didn\'t provide any arguments, ${message.author}!`;

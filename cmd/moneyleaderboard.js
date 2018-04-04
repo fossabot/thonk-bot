@@ -12,7 +12,7 @@ module.exports = {
         const possibleBalance = [['Username', 'Balance']];
         balances.forEach(bal => {
             const [plsignore, userieedee] = bal.ID.split('_');
-            if (config.ownerID.includes(userieedee) || !client.users.get(userieedee)) return;
+            if (config.ownerID.includes(userieedee) || !client.users.get(userieedee) || typeof bal !== Number) return;
             const tag = client.users.get(userieedee).username;
             possibleBalance.push([tag, bal.data]);
             if (possibleBalance.length > 5) possibleBalance.slice(1).slice(-5);

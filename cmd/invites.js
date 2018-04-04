@@ -16,8 +16,10 @@ module.exports = {
 
         const possibleInvites = [['Username', 'Uses']];
         invites.forEach(invite => {
-            possibleInvites.push([invite.inviter.username, invite.uses])
+            possibleInvites.push([invite.inviter.username, invite.uses]);
         });
+
+        if (possibleInvites.length > 10) possibleInvites.slice(1).slice(-10);
 
         const embed = new discord.RichEmbed()
             .setColor('AQUA')

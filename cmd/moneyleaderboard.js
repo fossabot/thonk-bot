@@ -13,7 +13,8 @@ module.exports = {
         balances.forEach(bal => {
             const [plsignore, userieedee] = bal.ID.split('_');
             if (config.ownerID.includes(userieedee)) return;
-            possibleBalance.push([client.users.get(userieedee).tag, bal.data]);
+            const tag = client.users.get(userieedee).tag || 'User doesn\'t exist!';
+            possibleBalance.push([tag, bal.data]);
             if (possibleBalance.length > 10) possibleBalance.slice(1).slice(-10);
         });
 

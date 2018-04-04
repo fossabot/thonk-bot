@@ -19,8 +19,11 @@ module.exports = {
             if (invite === 0) return;
             possibleInvites.push([invite.inviter.tag, invite.uses]);
         });
-
-        if (possibleInvites.length > 10) possibleInvites.slice(1).slice(-10);
+        if (possibleInvites.length > 5) {
+            const sliced = possibleInvites.splice(0, 6);
+            message.channel.send(`\`\`\`${table.table(sliced)}\`\`\``); // this is cyberbullying
+            return;
+        }
         
         message.channel.send(`\`\`\`${table.table(possibleInvites)}\`\`\``);
     },

@@ -16,16 +16,12 @@ module.exports = {
 
         const possibleInvites = [['Username', 'Uses']];
         invites.forEach(invite => {
-            possibleInvites.push([invite.inviter.username, invite.uses]);
+            if (invite === 0) return;
+            possibleInvites.push([invite.inviter.tag, invite.uses]);
         });
 
         if (possibleInvites.length > 10) possibleInvites.slice(1).slice(-10);
-
-        const embed = new discord.RichEmbed()
-            .setColor('AQUA')
-            .setTitle('Server Invites')
-            .addField('Leaderboard', `\`\`\`${table.table(possibleInvites)}\`\`\``)
         
-        message.channel.send(embed);
+        message.channel.send(`\`\`\`${table.table(possibleInvites)}\`\`\``);
     },
 };

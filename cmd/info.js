@@ -15,6 +15,7 @@ module.exports = {
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL)
             .setColor('GOLD')
             .addField('🖥 Memory used', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
+            .addField('CPU Usage', Math.round(process.cpuUsage().system / 1000000 + '%'), true)
             .addField('🕒 Uptime', moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]'), true)
             .addField('👥 Servers', client.guilds.size, true)
             .addField('👤 Users', client.users.size, true)

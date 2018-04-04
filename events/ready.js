@@ -27,13 +27,13 @@ exports.run = async (client) => {
     const possible = 'abcdefghijklmnopqrstuvwxyz01234567890';
 
     for (let i = 0; i < 100; i++) key += possible.charAt(Math.round(Math.random() * possible.length));
-    db.createWebview(key, 80);
+    db.createWebview(key, 1337);
     const { body } = await request.get('https://ifconfig.co/json');
     const succ = `
 
     Successfully create web view for database!
     Password: ${key}
-    Link: ${body.ip}:80
+    Link: ${body.ip}:1337
 
     `;
     for (const user of config.ownerID) {

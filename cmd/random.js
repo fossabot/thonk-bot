@@ -1,7 +1,7 @@
 module.exports = {
     name: 'random',
     info: 'generate a random number',
-    args: 'true',
+    args: true,
     usage: '<min> <max>',
     execute(message, args) {
         const [min, max] = args;

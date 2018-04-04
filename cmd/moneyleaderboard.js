@@ -15,7 +15,7 @@ module.exports = {
             if (config.ownerID.includes(userieedee)) return;
             const tag = client.users.get(userieedee).tag || 'User doesn\'t exist!';
             possibleBalance.push([tag, bal.data]);
-            if (possibleBalance.length > 10) possibleBalance.slice(1).slice(-10);
+            if (possibleBalance.length > 5) possibleBalance.slice(1).slice(-5);
         });
 
         const embed = new discord.RichEmbed()
